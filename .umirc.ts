@@ -26,9 +26,9 @@ export default defineConfig({
       path: 'https://github.com/yingliyu/fish-ui',
     },
   ],
-  resolve: {
-    includes: ['docs', 'components'],
-  },
+  // resolve: {
+  //   includes: ['docs', 'components'],
+  // },
   // exportStatic: {}, // 将所有路由输出为 HTML 目录结构，以免刷新页面时 404
   // locales: [
   //   ['zh-CN', '中文'],
