@@ -12,8 +12,9 @@ Demo:
 ```tsx
 import React from 'react';
 import { Button } from 'eyas-design';
+// import './style/index.ts';
 
-export default () => <Button title="First Demo" />;
+export default () => <Button type="primary">Primary</Button>;
 ```
 
 More skills for writing demo: https://d.umijs.org/guide/basic#write-component-demo
