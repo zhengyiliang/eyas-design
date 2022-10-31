@@ -6,7 +6,7 @@ import cs from '../_util/classNames';
 import { ConfigContext } from '../config-provider';
 import type { ButtonProps } from './interface';
 import useMergeProps from '../_util/hooks/useMergeProps';
-// import './style/index.less'
+import './style/index.ts'
 
 const regexTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;
 
