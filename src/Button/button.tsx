@@ -7,7 +7,7 @@ import { ConfigContext } from '../config-provider';
 import type { ButtonProps } from './interface';
 import useMergeProps from '../_util/hooks/useMergeProps';
 import './style/index.ts'
-
+console.log('xxxx')
 const regexTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;
 
 function processChildren(children?: ReactNode) {

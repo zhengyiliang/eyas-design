@@ -1,4 +1,4 @@
-const { getRgbStr } = require('../../../../color/index');
+const { getRgbStr } = require('@eyas-design/color');
 
 module.exports = {
   install(_, __, functions) {

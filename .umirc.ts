@@ -23,7 +23,7 @@ export default defineConfig({
     },
     {
       title: 'GitHub',
-      path: 'https://github.com/yingliyu/fish-ui',
+      path: 'https://github.com/zhengyiliang/eyas-design',
     },
   ],
   // resolve: {
