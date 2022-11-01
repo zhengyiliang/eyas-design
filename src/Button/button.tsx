@@ -7,15 +7,16 @@ import { ConfigContext } from '../config-provider';
 import type { ButtonProps } from './interface';
 import useMergeProps from '../_util/hooks/useMergeProps';
 import './style/index.ts'
-console.log('xxxx')
+
 const regexTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;
 
 function processChildren(children?: ReactNode) {
+  // 重组孩子节点-如果连续两个节点都出现字符串或者数字，则把他们拼接在一起
   const childrenList: React.ReactNode[] = [];
-  let isPrevChildPure = false;
+  let isPrevChildPure = false; // 上一个节点是否为string | number，默认不是
   React.Children.forEach(children, (child) => {
-    const isCurrentChildPure = typeof child === 'string' || typeof child === 'number';
-    if (isCurrentChildPure && isPrevChildPure) {
+    const isCurrentChildPure = typeof child === 'number' || typeof child === 'string';
+    if (isCurrentChildPure && isPrevChildPure) { // 如果连续两个节点都出现字符串或者数字，则把他们拼接在一起
       const lastIndex = childrenList.length - 1;
       const lastChild = childrenList[lastIndex];
       childrenList[lastIndex] = `${lastChild}${child}`;
@@ -24,9 +25,8 @@ function processChildren(children?: ReactNode) {
     }
     isPrevChildPure = isCurrentChildPure;
   });
-  return React.Children.map(childrenList, (child) =>
-    typeof child === 'string' ? <span>{child}</span> : child
-  );
+
+  return React.Children.map(childrenList, (child) => (typeof child === 'string' ? <span>{child}</span> : child));
 }
 
 const defaultProps: ButtonProps = {
@@ -43,7 +43,7 @@ function Button(baseProps: ButtonProps, ref: any) {
     componentConfig,
     rtl,
   } = useContext(ConfigContext);
-  const props = useMergeProps<ButtonProps>(baseProps, defaultProps, componentConfig?.Button ?? {});
+  const props = useMergeProps<ButtonProps>(baseProps, defaultProps, componentConfig?.Button);
   const {
     style,
     className,
@@ -71,6 +71,7 @@ function Button(baseProps: ButtonProps, ref: any) {
   const innerButtonRef = useRef();
   const buttonRef = ref || innerButtonRef;
 
+  // 只有两个汉字的内容
   useEffect(() => {
     if (autoInsertSpaceInButton && buttonRef && buttonRef.current) {
       const textContent = buttonRef.current.textContent;
@@ -84,8 +85,11 @@ function Button(baseProps: ButtonProps, ref: any) {
     }
   }, [buttonRef.current, autoInsertSpaceInButton]);
 
-  const prefixCls = getPrefixCls && getPrefixCls('btn');
+  // 获取前缀
+  const prefixCls = getPrefixCls('btn');
+
   const _type = type === 'default' ? 'secondary' : type;
+
   const classNames = cs(
     prefixCls,
     `${prefixCls}-${_type}`,

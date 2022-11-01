@@ -6,7 +6,7 @@ import type { ButtonGroupProps } from './interface';
 function Group(props: ButtonGroupProps, ref: any) {
   const { className, style, children, ...rest } = props;
   const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls && getPrefixCls('btn-group');
+  const prefixCls = getPrefixCls('btn-group');
   const classNames = cs(prefixCls, className);
 
   return (

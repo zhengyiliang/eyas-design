@@ -5,63 +5,63 @@ export interface BaseButtonProps {
   className?: string | string[];
   children?: ReactNode;
   /**
-   * 按钮主要分为六种按钮类型：主要按钮、次级按钮、虚框按钮、文字按钮、线性按钮，`default` 为次级按钮。
-   * @defaultValue default
+   * @description 按钮主要分为六种按钮类型：主要按钮、次级按钮、虚框按钮、文字按钮、线性按钮，`default` 为次级按钮。
+   * @default default
    */
   type?: 'default' | 'primary' | 'secondary' | 'dashed' | 'text' | 'outline';
   /**
-   * 按钮状态
-   * @defaultValue default
+   * @description 按钮状态
+   * @default default
    */
   status?: 'warning' | 'danger' | 'success' | 'default';
   /**
-   * 按钮的尺寸
-   * @defaultValue default
+   * @description 按钮的尺寸
+   * @default default
    */
   size?: 'mini' | 'small' | 'default' | 'large';
   /**
-   * 按钮形状，`circle` - 圆形， `round` - 全圆角， `square` - 长方形
-   * @defaultValue square
+   * @description 按钮形状，`circle` - 圆形， `round` - 全圆角， `square` - 长方形
+   * @default square
    */
   shape?: 'circle' | 'round' | 'square';
   /**
-   * 添加跳转链接，设置此属性，button表现跟a标签一致
+   * @description 添加跳转链接，设置此属性，button表现跟a标签一致
    */
   href?: string;
   /**
-   * a 链接的 target 属性，href 存在时生效
+   * @description a 链接的 target 属性，href 存在时生效
    */
   target?: string;
   /**
-   * a 链接的原生属性，href 存在时生效
+   * @description a 链接的原生属性，href 存在时生效
    */
   anchorProps?: HTMLProps<HTMLAnchorElement>;
   /**
-   * 是否禁用
+   * @description 是否禁用
    */
   disabled?: boolean;
   /**
-   * 按钮是否是加载状态
+   * @description 按钮是否是加载状态
    */
   loading?: boolean;
   /**
-   * 当 loading 的时候，不改变按钮的宽度。
+   * @description 当 loading 的时候，不改变按钮的宽度。
    */
   loadingFixedWidth?: boolean;
   /**
-   * 设置按钮的图标
+   * @description 设置按钮的图标
    */
   icon?: ReactNode;
   /**
-   * 只有图标，按钮宽高相等。如果指定 `icon` 且没有 children，`iconOnly` 默认为 true
+   * @description 只有图标，按钮宽高相等。如果指定 `icon` 且没有 children，`iconOnly` 默认为 true
    */
   iconOnly?: boolean;
   /**
-   * 按钮宽度随容器自适应。
+   * @description 按钮宽度随容器自适应。
    */
   long?: boolean;
   /**
-   * 点击按钮的回调
+   * @description 点击按钮的回调
    */
   onClick?: (e: Event) => void;
 }
@@ -75,8 +75,8 @@ export type AnchorButtonProps = {
 
 export type FinalButtonProps = {
   /**
-   * 按钮原生的 html type 类型
-   * @defaultValue button
+   * @description 按钮原生的 html type 类型
+   * @default button
    */
   htmlType?: 'button' | 'submit' | 'reset';
 } & BaseButtonProps &
