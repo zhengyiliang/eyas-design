@@ -1,17 +1,15 @@
 import React, { useState, useContext, useEffect, useRef, ReactNode, forwardRef } from 'react';
-// import IconLoading from '../../icon/react-icon/IconLoading';
+import { Loading3QuartersOutlined as IconLoading } from '@ant-design/icons'
 import Group from './group';
 import cs from '../_util/classNames';
-// import cs from 'classnames';
 import { ConfigContext } from '../config-provider';
 import type { ButtonProps } from './interface';
-import useMergeProps from '../_util/hooks/useMergeProps';
 import './style/index.ts'
 
 const regexTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;
 
+// 重组孩子节点-如果连续两个节点都出现字符串或者数字，则把他们拼接在一起
 function processChildren(children?: ReactNode) {
-  // 重组孩子节点-如果连续两个节点都出现字符串或者数字，则把他们拼接在一起
   const childrenList: React.ReactNode[] = [];
   let isPrevChildPure = false; // 上一个节点是否为string | number，默认不是
   React.Children.forEach(children, (child) => {
@@ -29,30 +27,23 @@ function processChildren(children?: ReactNode) {
   return React.Children.map(childrenList, (child) => (typeof child === 'string' ? <span>{child}</span> : child));
 }
 
-const defaultProps: ButtonProps = {
-  htmlType: 'button',
-  type: 'default',
-  shape: 'square',
-};
-
-function Button(baseProps: ButtonProps, ref: any) {
+function Button(props: ButtonProps, ref: any) {
+  // 全局默认属性
   const {
     getPrefixCls,
     size: ctxSize,
     autoInsertSpaceInButton,
-    componentConfig,
     rtl,
   } = useContext(ConfigContext);
-  const props = useMergeProps<ButtonProps>(baseProps, defaultProps, componentConfig?.Button);
   const {
     style,
     className,
     children,
-    htmlType,
-    type,
+    htmlType = 'button',
+    type = 'default',
     status,
-    size,
-    shape,
+    size = ctxSize,
+    shape = 'square',
     href,
     anchorProps,
     disabled,
@@ -64,9 +55,8 @@ function Button(baseProps: ButtonProps, ref: any) {
     long,
     ...rest
   } = props;
-  {/* <IconLoading /> */ }
-  const iconNode = loading ? <div>loading</div> : icon;
-
+  const iconNode = loading ? <IconLoading spin /> : icon;
+  // 孩子节点是否只有两个汉字，如果只有两个汉字中间加间距
   const [isTwoCNChar, setIsTwoCNChar] = useState(false);
   const innerButtonRef = useRef();
   const buttonRef = ref || innerButtonRef;

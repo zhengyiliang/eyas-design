@@ -1,10 +1,10 @@
 import { defineConfig } from 'dumi';
 
 export default defineConfig({
-  title: 'eyas-design',
+  title: 'eyas-ui',
   hash: true,
-  base: '/eyas-design',
-  publicPath: '/eyas-design/',
+  base: '/eyas-ui',
+  publicPath: '/eyas-ui/',
   favicon: 'https://img.alicdn.com/tfs/TB1YHEpwUT1gK0jSZFhXXaAtVXa-28-27.svg',
   logo: 'https://img.alicdn.com/tfs/TB1YHEpwUT1gK0jSZFhXXaAtVXa-28-27.svg',
   outputPath: 'docs-dist',

@@ -8,6 +8,7 @@
       "es5",
       "dom"
     ],
+    "strict": false,
     "moduleResolution": "node",
     "declaration": true,
     "noUnusedLocals": true,

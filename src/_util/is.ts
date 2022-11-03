@@ -1,4 +1,4 @@
-import { Dayjs } from 'dayjs';
+// import { Dayjs } from 'dayjs';
 
 const opt = Object.prototype.toString;
 
@@ -72,17 +72,17 @@ export function isWindow(el: any): el is Window {
   return el === window;
 }
 
-export function isDayjs(time): time is Dayjs {
-  // dayjs.isDayjs 在实际应用场景，比如多个版本的 dayjs 会失效
-  return (
-    isObject(time) &&
-    (('$y' in time &&
-      '$M' in time &&
-      '$D' in time &&
-      '$d' in time &&
-      '$H' in time &&
-      '$m' in time &&
-      '$s' in time) ||
-      time._isAMomentObject) // 兼容 moment 的验证
-  );
-}
+// export function isDayjs(time): time is Dayjs {
+//   // dayjs.isDayjs 在实际应用场景，比如多个版本的 dayjs 会失效
+//   return (
+//     isObject(time) &&
+//     (('$y' in time &&
+//       '$M' in time &&
+//       '$D' in time &&
+//       '$d' in time &&
+//       '$H' in time &&
+//       '$m' in time &&
+//       '$s' in time) ||
+//       time._isAMomentObject) // 兼容 moment 的验证
+//   );
+// }

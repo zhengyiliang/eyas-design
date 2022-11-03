@@ -11,10 +11,15 @@ Demo:
 
 ```tsx
 import React from 'react';
-import { Button } from 'eyas-design';
-// import './style/index.ts';
+import { Button, Space } from 'eyas-ui';
 
-export default () => <Button type="primary">Primary</Button>;
+export default () => <Space size="large" wrap>
+      <Button type="primary">Primary</Button>
+      <Button type="secondary">Secondary</Button>
+      <Button type="dashed">Dashed</Button>
+      <Button type="outline">Outline</Button>
+      <Button type="text">Text</Button>
+    </Space>;
 ```
 
 <!-- <API /> -->
