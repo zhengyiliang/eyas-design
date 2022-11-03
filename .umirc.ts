@@ -9,7 +9,7 @@ export default defineConfig({
   logo: 'https://img.alicdn.com/tfs/TB1YHEpwUT1gK0jSZFhXXaAtVXa-28-27.svg',
   outputPath: 'docs-dist',
   mode: 'site',
-  mfsu: {},
+  // mfsu: {},
   dynamicImport: {},
   navs: [
     // null,

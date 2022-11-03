@@ -1,10 +1,8 @@
 import React, { useState, useContext, useEffect, useRef, ReactNode, forwardRef } from 'react';
 import { Loading3QuartersOutlined as IconLoading } from '@ant-design/icons'
-import Group from './group';
 import cs from '../_util/classNames';
 import { ConfigContext } from '../config-provider';
 import type { ButtonProps } from './interface';
-import './style/index.ts'
 
 const regexTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;
 
@@ -153,17 +151,5 @@ function Button(props: ButtonProps, ref: any) {
 
 const ForwardRefButton = forwardRef<unknown, ButtonProps>(Button);
 
-const ButtonComponent = ForwardRefButton as typeof ForwardRefButton & {
-  __BYTE_BUTTON: boolean;
-  Group: typeof Group;
-};
+export default ForwardRefButton;
 
-ButtonComponent.__BYTE_BUTTON = true;
-
-ButtonComponent.Group = Group;
-
-ButtonComponent.displayName = 'Button';
-
-export default ButtonComponent;
-
-export { ButtonProps };
