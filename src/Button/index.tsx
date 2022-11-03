@@ -1,10 +1,10 @@
 import React, { useState, useContext, useEffect, useRef, ReactNode, forwardRef } from 'react';
-import { Loading3QuartersOutlined as IconLoading } from '@ant-design/icons'
+import { Loading3QuartersOutlined as IconLoading } from '@ant-design/icons';
 import cs from '../_util/classNames';
 import { ConfigContext } from '../config-provider';
 import type { ButtonProps } from './interface';
 import Group from './group';
-import './style/index'
+import './style/index';
 
 const regexTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;
 
