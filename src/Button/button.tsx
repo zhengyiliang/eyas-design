@@ -55,7 +55,6 @@ function Button(props: ButtonProps, ref: any) {
     long,
     ...rest
   } = props;
-  const iconNode = loading ? <IconLoading spin /> : icon;
   // 孩子节点是否只有两个汉字，如果只有两个汉字中间加间距
   const [isTwoCNChar, setIsTwoCNChar] = useState(false);
   const innerButtonRef = useRef();
@@ -77,6 +76,8 @@ function Button(props: ButtonProps, ref: any) {
 
   // 获取前缀
   const prefixCls = getPrefixCls('btn');
+
+  const iconNode = loading ? <IconLoading spin className={`${prefixCls}-icon`} /> : React.cloneElement(icon ?? <></>, { className: `${prefixCls}-icon` });
 
   const _type = type === 'default' ? 'secondary' : type;
 

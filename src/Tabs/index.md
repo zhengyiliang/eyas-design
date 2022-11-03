@@ -11,7 +11,7 @@ Demo:
 
 ```tsx
 import React from 'react';
-import { Button } from 'eyas-design';
+import { Button } from 'eyas-ui';
 
 export default () => <Button title="First Demo" />;
 ```

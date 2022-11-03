@@ -2,6 +2,7 @@
 @import './token.less';
 
 @btn-prefix-cls: ~'@{prefix}-btn';
+@btn-icon: ~'@{btn-prefix-cls}-icon';
 
 .btn-type(@type) {
   .@{btn-prefix-cls}-@{type}:not(.@{btn-prefix-cls}-disabled) {
@@ -72,19 +73,19 @@
     border-radius:~'@{btn-size-@{size}-radius}';
     // line-height: calc(~'@{size-@{size}}' - ~'@{btn-size-@{size}-border-width}' * 2);
 
-    >svg+span,
-    >span+svg {
+    >.@{btn-icon}+span,
+    >span+.@{btn-icon} {
       margin-left:~'@{btn-size-@{size}-icon-spacing}';
     }
 
-    svg {
+    .@{btn-icon} {
       vertical-align:~'@{btn-size-@{size}-icon-vertical-align}';
     }
 
     &.@{btn-prefix-cls}-rtl {
 
-      >svg+span,
-      >span+svg {
+      >.@{btn-icon}+span,
+      >span+.@{btn-icon} {
         margin-left: 0;
         margin-right:~'@{btn-size-@{size}-icon-spacing}';
       }
@@ -225,7 +226,7 @@
     transition: none;
   }
 
-  &-two-chinese-chars>*:not(svg) {
+  &-two-chinese-chars>*:not(.@{btn-icon}) {
     letter-spacing: 0.3em;
     margin-right: -0.3em;
   }
