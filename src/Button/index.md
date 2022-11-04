@@ -31,19 +31,8 @@ import React from 'react';
 import {Button, Space} from  'eyas-ui';
 import {PlusOutlined,DeleteOutlined } from '@ant-design/icons';
 export default () => <Space size="large">
-   <Button type='primary' icon={<PlusOutlined />} loading/>
-   <Button type='primary' shape="circle" loading/>
-   <Button type='primary' icon={2} />
-   <Button type='primary' icon={<DeleteOutlined className="test"/>}>
-        Delete
-   </Button>
-      <Button type='primary' icon={'哈'}>
-        Delete
-   </Button>
-      <Button type='primary' icon={true}>
-        Delete
-   </Button>
-        <Button type='primary' icon={<><span>1</span><span>2</span></>} >
+   <Button type='primary' icon={<PlusOutlined />} />
+   <Button type='primary' icon={<DeleteOutlined />}>
         Delete
    </Button>
 </Space>
