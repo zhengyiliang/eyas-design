@@ -64,11 +64,17 @@ export interface BaseButtonProps {
    * @description 点击按钮的回调
    */
   onClick?: (e: Event) => void;
+
 }
 
 export type AnchorButtonProps = {
   href: string;
   target?: string;
+  /**
+   * @description 隐藏hover底色和去掉内边距
+   * @default false
+   */
+  hoverable?: boolean;
   anchorProps?: HTMLProps<HTMLAnchorElement>;
 } & BaseButtonProps &
   Omit<React.AnchorHTMLAttributes<any>, 'type' | 'onClick' | 'className'>;

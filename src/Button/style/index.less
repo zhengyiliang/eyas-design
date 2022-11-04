@@ -4,6 +4,15 @@
 @btn-prefix-cls: ~'@{prefix}-btn';
 @btn-icon: ~'@{btn-prefix-cls}-icon';
 
+.text-hoverless {
+  &.@{btn-prefix-cls}-text-hoverless,
+  &.@{btn-prefix-cls}-text-hoverless:hover {
+    background-color: @btn-text-color-bg_hoverless;
+    padding: 0;
+    height: auto;
+  }
+}
+
 .btn-type(@type) {
   .@{btn-prefix-cls}-@{type}:not(.@{btn-prefix-cls}-disabled) {
     background-color:~'@{btn-@{type}-color-bg}';
@@ -25,7 +34,12 @@
     &:focus-visible {
       box-shadow: 0 0 0 @btn-box-shadow-radius ~'@{btn-@{type}-color-box-shadow}';
     }
+
+    .text-hoverless()
+
   }
+
+
 
   .@{btn-prefix-cls}-@{type}.@{btn-prefix-cls}-disabled {
     background-color:~'@{btn-@{type}-color-bg_disabled}';
@@ -56,6 +70,9 @@
     &:focus-visible {
       box-shadow: 0 0 0 @btn-box-shadow-radius ~'@{btn-color-box-shadow_@{status}}';
     }
+
+    .text-hoverless()
+
   }
 
   .@{btn-prefix-cls}-@{type}.@{btn-prefix-cls}-status-@{status}.@{btn-prefix-cls}-disabled {

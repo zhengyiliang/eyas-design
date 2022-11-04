@@ -36,6 +36,7 @@ function Button(props: ButtonProps, ref: any) {
     rtl,
   } = useContext(ConfigContext);
   const {
+    hoverable = false,
     style,
     className,
     children,
@@ -97,6 +98,7 @@ function Button(props: ButtonProps, ref: any) {
     `${prefixCls}-size-${size || ctxSize}`,
     `${prefixCls}-shape-${shape}`,
     {
+      [`${prefixCls}-text-hoverless`]: type === 'text' && hoverable,
       [`${prefixCls}-long`]: long,
       [`${prefixCls}-status-${status}`]: status,
       [`${prefixCls}-loading-fixed-width`]: loadingFixedWidth,
