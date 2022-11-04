@@ -436,7 +436,7 @@ export default App;
 
 ## API
 
-Button
+**Button**
 
 | 参数名 | 描述 | 类型 | 默认值 |
 | --- | --- | --- | --- |
