@@ -1,15 +1,14 @@
 ---
-group: 
-  title: 通用
+group:
+  title: 布局
+  order: 1
 nav:
   path: /components
 ---
 
-## Space 间距
+# 间距 Space
 
 Demo:
-
-
 
 <!-- <API /> -->
 

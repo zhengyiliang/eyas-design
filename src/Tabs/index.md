@@ -1,11 +1,11 @@
 ---
-group: 
+group:
   title: 通用
 nav:
   path: /components
 ---
 
-## tabs 标签页
+# 标签页 tabs
 
 Demo:
 
