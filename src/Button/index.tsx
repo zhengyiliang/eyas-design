@@ -77,7 +77,17 @@ function Button(props: ButtonProps, ref: any) {
   // 获取前缀
   const prefixCls = getPrefixCls('btn');
 
-  const iconNode = loading ? <IconLoading spin className={`${prefixCls}-icon`} /> : React.cloneElement(icon ? <>{icon}</> : <></>, { className: `${prefixCls}-icon` });
+  const getBtnIcon = (icon) => {
+    if (!icon || ['string', 'number', 'boolean'].includes(typeof icon)) return icon
+    return React.cloneElement(icon, {
+      className: cs(
+        icon?.props?.className,
+        `${prefixCls}-icon`
+      )
+    });
+  }
+
+  const iconNode = loading ? <IconLoading spin className={`${prefixCls}-icon`} /> : getBtnIcon(icon);
 
   const _type = type === 'default' ? 'secondary' : type;
 
