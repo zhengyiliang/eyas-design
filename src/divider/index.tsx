@@ -27,7 +27,7 @@ function Divider(props: DividerProps, ref) {
     className
   );
 
-    console.log('children', children, type)
+  // console.log('children', children, type)
 
   return <div role="separator" ref={ref} className={classNames} {...rest}>
     {children && type === 'horizontal' && <span className={`${prefixCls}-text ${prefixCls}-text-${orientation}`}>{children}</span>}

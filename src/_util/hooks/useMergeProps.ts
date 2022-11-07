@@ -18,7 +18,7 @@ export default function useMergeProps<PropsType>(
   const props = useMemo(() => {
     // Must remove property of MergePropsOptions before passing it to component
     const mProps = omit(componentProps, ['_ignorePropsFromGlobal']) as PropsType;
-    console.log('mProps', mProps)
+    // console.log('mProps', mProps)
     for (const propName in _defaultProps) {
       if (mProps[propName] === undefined) {
         mProps[propName] = _defaultProps[propName];
