@@ -4,8 +4,9 @@ import cs from '../_util/classNames';
 import { isArray, isObject } from '../_util/is';
 import omit from '../_util/omit';
 import { ConfigContext } from '../config-provider';
-import { Loading3QuartersOutlined as IconLoading } from '@ant-design/icons'
-import { SwitchProps } from './interface';
+import { Loading3QuartersOutlined as IconLoading } from '@ant-design/icons';
+import type { SwitchProps } from './interface';
+import './style'
 
 function Switch(props: SwitchProps, ref) {
   const { getPrefixCls, size: ctxSize, rtl } = useContext(ConfigContext);
