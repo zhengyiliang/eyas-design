@@ -6,6 +6,7 @@ import type { ConfigProviderProps } from './interface';
 const defaultProps: ConfigProviderProps = {
   prefixCls: 'eyas',
   size: 'default',
+  getPopupContainer: () => document.body,
 };
 
 // 全局 context

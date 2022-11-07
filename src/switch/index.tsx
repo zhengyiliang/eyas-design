@@ -6,7 +6,7 @@ import omit from '../_util/omit';
 import { ConfigContext } from '../config-provider';
 import { Loading3QuartersOutlined as IconLoading } from '@ant-design/icons';
 import type { SwitchProps } from './interface';
-import './style'
+import './style/index';
 
 function Switch(props: SwitchProps, ref) {
   const { getPrefixCls, size: ctxSize, rtl } = useContext(ConfigContext);

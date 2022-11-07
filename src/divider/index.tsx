@@ -2,7 +2,7 @@ import React, { forwardRef, useContext } from 'react';
 import { ConfigContext } from '../config-provider';
 import cs from '../_util/classNames'
 import type { DividerProps } from './interface';
-import './style'
+import './style/index';
 
 function Divider(props: DividerProps, ref) {
 

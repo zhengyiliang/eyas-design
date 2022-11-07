@@ -14,6 +14,11 @@ export type ComponentConfig = {
 // 配置提供-属性
 export interface ConfigProviderProps {
   /**
+ * @zh 全局弹出框挂载的父级节点。
+ * @default () => document.body
+ */
+  getPopupContainer?: (node: HTMLElement) => Element;
+  /**
    * @description 当按钮中是两个汉字时，自动在两个汉字中添加一个空格。
    */
   autoInsertSpaceInButton?: boolean;

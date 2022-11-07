@@ -3,7 +3,7 @@ import cs from '../_util/classNames';
 import { ConfigContext } from '../config-provider';
 import { isArray, isNumber, isNull, isUndefined } from '../_util/is';
 import type { SpaceProps, SpaceSize } from './interface';
-import './style/index'
+import './style/index';
 
 // 间距
 const MARGIN_SIZE = {
@@ -11,7 +11,7 @@ const MARGIN_SIZE = {
   'small': 8,
   'medium': 16,
   'large': 24
-}
+};
 
 function Space(props: SpaceProps, ref) {
   const { getPrefixCls, rtl } = useContext(ConfigContext);

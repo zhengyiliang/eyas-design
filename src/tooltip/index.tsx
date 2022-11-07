@@ -1,0 +1,158 @@
+import React, {
+  ReactNode,
+  forwardRef,
+  useContext,
+  useRef,
+  PropsWithChildren,
+  useImperativeHandle,
+} from 'react';
+import cs from '../_util/classNames';
+import Trigger, { EventsByTriggerNeed } from '../Trigger';
+import { ConfigContext } from '../config-provider';
+import pick, { pickDataAttributes } from '../_util/pick';
+import { TooltipProps } from './interface';
+import { isFunction } from '../_util/is';
+import './style/index';
+
+export type TooltipHandle = {
+  updatePopupPosition: () => void;
+};
+
+function Tooltip(props: PropsWithChildren<TooltipProps>, ref) {
+  const { getPrefixCls } = useContext(ConfigContext);
+  const {
+    position = 'top',
+    trigger = 'hover',
+    escToClose = false,
+    unmountOnExit = true,
+    blurToHide = true,
+    popupHoverStay = true,
+    style,
+    className,
+    children,
+    defaultPopupVisible,
+    popupVisible,
+    prefixCls: tooltipPrefixCls,
+    disabled,
+    onVisibleChange,
+    triggerProps,
+    childrenPrefix,
+    getPopupContainer,
+    content,
+    mini,
+    color,
+    ...rest
+  } = props;
+
+  const refTrigger = useRef<Trigger>();
+
+  const updatePopupPosition = (delay = 0, callback?: () => void) => {
+    refTrigger.current && refTrigger.current.updatePopupPosition(delay, callback);
+  };
+
+  useImperativeHandle<any, TooltipHandle>(
+    ref,
+    () => ({
+      updatePopupPosition,
+    }),
+    []
+  );
+
+  const prefixCls = tooltipPrefixCls || getPrefixCls('tooltip');
+  const otherProps: any = {
+    ...pick(rest, EventsByTriggerNeed),
+    ...pickDataAttributes(rest),
+    ...triggerProps,
+  };
+
+  const renderedContent = isFunction(content) ? content() : content;
+
+  // it is important to note that this method has its limitations
+  // it fails in cases such as content = <>&nbsp;&nbsp;</>
+  const isEmpty = (content: ReactNode): boolean => {
+    if (content === null || content === undefined || content === false) {
+      return true;
+    }
+    if (typeof content === 'string' && content.trim() === '') {
+      return true;
+    }
+    return false;
+  };
+
+  if ('popupVisible' in props) {
+    otherProps.popupVisible = popupVisible;
+  } else if (isEmpty(renderedContent)) {
+    // hide if empty content
+    otherProps.popupVisible = false;
+  }
+
+  if (otherProps.showArrow !== false || otherProps.arrowProps) {
+    otherProps.arrowProps = otherProps.arrowProps || {};
+    if (color) {
+      otherProps.arrowProps.style = {
+        backgroundColor: color,
+        ...otherProps.arrowProps.style,
+      };
+    }
+  }
+
+  return (
+    <Trigger
+      style={{
+        maxWidth: 350,
+        ...style,
+      }}
+      className={className}
+      ref={refTrigger}
+      classNames="zoomInFadeOut"
+      duration={{
+        enter: 300,
+        exit: 100,
+      }}
+      popup={() => {
+        return (
+          <div
+            style={{ backgroundColor: color }}
+            className={cs(`${prefixCls}-content`, `${prefixCls}-content-${position}`, {
+              [`${prefixCls}-mini`]: mini,
+            })}
+            role="tooltip"
+          >
+            <div className={`${prefixCls}-content-inner`}>{renderedContent}</div>
+          </div>
+        );
+      }}
+      position={position}
+      disabled={disabled}
+      trigger={trigger}
+      escToClose={escToClose}
+      showArrow
+      popupAlign={{
+        left: 12,
+        right: 12,
+        top: 12,
+        bottom: 12,
+      }}
+      mouseEnterDelay={200}
+      mouseLeaveDelay={200}
+      unmountOnExit={unmountOnExit}
+      popupHoverStay={popupHoverStay}
+      blurToHide={blurToHide}
+      childrenPrefix={childrenPrefix || prefixCls}
+      getPopupContainer={getPopupContainer}
+      onVisibleChange={onVisibleChange}
+      defaultPopupVisible={defaultPopupVisible}
+      {...otherProps}
+    >
+      {children}
+    </Trigger>
+  );
+}
+
+const TooltipComponent = forwardRef<TooltipHandle, PropsWithChildren<TooltipProps>>(Tooltip);
+
+TooltipComponent.displayName = 'Tooltip';
+
+export default TooltipComponent;
+
+export { TooltipProps };
