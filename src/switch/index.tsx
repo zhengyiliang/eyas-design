@@ -4,9 +4,8 @@ import cs from '../_util/classNames';
 import { isArray, isObject } from '../_util/is';
 import omit from '../_util/omit';
 import { ConfigContext } from '../config-provider';
-import { Loading3QuartersOutlined as IconLoading } from '@ant-design/icons';
+import { IconLoading } from '@eyas-design/icons';
 import type { SwitchProps } from './interface';
-import './style/index';
 
 function Switch(props: SwitchProps, ref) {
   const { getPrefixCls, size: ctxSize, rtl } = useContext(ConfigContext);
@@ -18,7 +17,7 @@ function Switch(props: SwitchProps, ref) {
     size: propSize,
     loading,
     onChange,
-    type = "circle",
+    type = 'circle',
     checkedText,
     uncheckedText,
     checkedIcon,
@@ -53,7 +52,7 @@ function Switch(props: SwitchProps, ref) {
       [`${prefixCls}-loading`]: loading,
       [`${prefixCls}-rtl`]: rtl,
     },
-    className
+    className,
   );
   let checkedElement = checkedText;
   let unCheckedElement = uncheckedText;

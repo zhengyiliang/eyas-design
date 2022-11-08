@@ -1,71 +1,56 @@
-import React, { CSSProperties, forwardRef } from 'react';
-import antdIcon, { createFromIconfontCN } from '@ant-design/icons'
-import * as IconComponent from '@ant-design/icons';
+import React, { Component, CSSProperties, SVGAttributes } from 'react';
+import addFromIconFontCn from './addFromIconFontCn';
+import cs from '../_util/classNames';
+import { ConfigConsumer } from '../config-provider';
 
-export type IconProps = {
-  /**
-   * @description 图标样式名
-   */
-  className?: string;
-
-  type?: string;
-  /**
-   * @description 图标旋转角度（IE9 无效）
-   */
-  rotate?: number;
-  /**
- * @description 是否有旋转动画
- * @default false
- */
-  spin?: boolean;
-  /**
-   * @description 设置图标的样式
-   */
+export interface IconProps extends Omit<SVGAttributes<SVGElement>, 'className'> {
   style?: CSSProperties;
-  /**
-   * @description 仅适用双色图标。设置双色图标的主要颜色
-   *
-   */
-  twoToneColor?: string;
-  iconFont?: string[];
-  component?: React.ComponentType<CustomIconComponentProps | React.SVGProps<SVGSVGElement>> | React.ForwardRefExoticComponent<CustomIconComponentProps>;
+  type?: string;
+  spin?: boolean;
+  className?: string | string[];
 }
 
 export interface CustomIconComponentProps {
-  width: string | number;
-  height: string | number;
-  fill: string;
-  viewBox?: string;
+  style?: CSSProperties;
   className?: string;
-  style?: React.CSSProperties;
+  width?: string | number;
+  height?: string | number;
+  fill?: string;
+  viewBox?: string;
 }
 
+class Icon extends Component<IconProps> {
+  static displayName = 'Icon';
 
-function Icon(props: IconProps, ref) {
+  static addFromIconFontCn = addFromIconFontCn;
 
-  const {
-    type,
-    rotate,
-    spin,
-    style,
-    iconFont,
-    ...rest } = props
+  renderIcon = ({ getPrefixCls }) => {
+    const { className, spin, children, type, ...rest } = this.props;
+    const defaultProps = {
+      width: '1em',
+      height: '1em',
+      fill: 'currentColor',
+    };
+    const iconProps: CustomIconComponentProps = {
+      ...defaultProps,
+      ...rest,
+    };
+    const prefixCls = getPrefixCls('icon');
+    const classNames = cs(
+      prefixCls,
+      type,
+      {
+        [`${prefixCls}-loading`]: spin,
+      },
+      className,
+    );
+    iconProps.className = classNames;
+    return <svg {...iconProps}>{children}</svg>;
+  };
 
-  // 自定义图标
-  if (iconFont?.length) {
-    const CustomIcon = createFromIconfontCN({
-      scriptUrl: iconFont
-    });
-    return <CustomIcon type={type} rotate={rotate} spin={spin} style={style} />
+  render() {
+    return <ConfigConsumer>{this.renderIcon}</ConfigConsumer>;
   }
+}
 
-  const EyasIcon = IconComponent[type] ?? antdIcon
-  return <EyasIcon rotate={rotate} spin={spin} style={style}  {...rest} ref={ref} />
-};
-
-const ForwardRefIcon = forwardRef<unknown, IconProps>(Icon);
-
-ForwardRefIcon.displayName = 'Icon';
-
-export default ForwardRefIcon;
-
+export default Icon;

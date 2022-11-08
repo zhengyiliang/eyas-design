@@ -7,12 +7,11 @@ import React, {
   useImperativeHandle,
 } from 'react';
 import cs from '../_util/classNames';
-import Trigger, { EventsByTriggerNeed } from '../Trigger';
+import Trigger, { EventsByTriggerNeed } from '../trigger';
 import { ConfigContext } from '../config-provider';
 import pick, { pickDataAttributes } from '../_util/pick';
-import { TooltipProps } from './interface';
+import type { TooltipProps } from './interface';
 import { isFunction } from '../_util/is';
-import './style/index';
 
 export type TooltipHandle = {
   updatePopupPosition: () => void;
@@ -55,7 +54,7 @@ function Tooltip(props: PropsWithChildren<TooltipProps>, ref) {
     () => ({
       updatePopupPosition,
     }),
-    []
+    [],
   );
 
   const prefixCls = tooltipPrefixCls || getPrefixCls('tooltip');

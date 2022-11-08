@@ -41,8 +41,8 @@
     ]
   },
   "dependencies": {
-    "@ant-design/icons": "^4.7.0",
     "@eyas-design/color": "^1.0.0",
+    "@eyas-design/icons": "^1.0.0",
     "b-tween": "^0.3.3",
     "react": "^18.0.0",
     "react-transition-group": "^4.4.5"

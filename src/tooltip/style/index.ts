@@ -1,3 +1,3 @@
 import '../../style/index.less';
-import '../../Trigger/style';
+import '../../trigger/style';
 import './index.less';

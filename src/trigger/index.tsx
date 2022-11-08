@@ -12,18 +12,17 @@ import cs from '../_util/classNames';
 import { ConfigContext } from '../config-provider';
 import getStyle from './getPopupStyle';
 import throttleByRaf from '../_util/throttleByRaf';
-import { TriggerProps, MouseLocationType } from './interface';
+import type { TriggerProps, MouseLocationType } from './interface';
 import { raf, caf } from '../_util/raf';
-import './style/index';
 
 export { TriggerProps };
 
 function mergeProps<PropsType>(
   componentProps: PropsType,
   defaultProps: Partial<PropsType>,
-  globalComponentConfig?: PropsType
+  globalComponentConfig?: PropsType,
 ): PropsType {
-  const _defaultProps = { ...defaultProps, ...globalComponentConfig ?? {} };
+  const _defaultProps = { ...defaultProps, ...(globalComponentConfig ?? {}) };
   const props = { ...componentProps };
 
   for (const propName in _defaultProps) {
@@ -75,7 +74,7 @@ export type EventsByTriggerNeedType =
 
 function splitChildrenStyle(
   obj: CSSProperties,
-  keys: string[]
+  keys: string[],
 ): { picked: CSSProperties; omitted: CSSProperties } {
   const picked: CSSProperties = {};
   const omitted: CSSProperties = { ...obj };
@@ -184,12 +183,10 @@ class Trigger extends PureComponent<TriggerProps, TriggerState> {
   getMergedProps = (baseProps?): PropsWithChildren<TriggerProps> => {
     const props = mergeProps<PropsWithChildren<TriggerProps>>(
       baseProps || this.props,
-      defaultProps
+      defaultProps,
     );
     return props;
   };
-
-
 
   constructor(props, context) {
     super(props, context);
@@ -477,7 +474,7 @@ class Trigger extends PureComponent<TriggerProps, TriggerState> {
       content,
       child,
       mountContainer,
-      this.mouseLocation
+      this.mouseLocation,
     );
     this.realPosition = realPosition || (this.getMergedProps().position as string);
     this.arrowStyle = arrowStyle || {};
@@ -488,14 +485,14 @@ class Trigger extends PureComponent<TriggerProps, TriggerState> {
     };
   };
 
-  showPopup = (callback: () => void = () => { }) => {
+  showPopup = (callback: () => void = () => {}) => {
     const popupStyle = this.getPopupStyle();
 
     this.setState(
       {
         popupStyle,
       },
-      callback
+      callback,
     );
   };
 
@@ -511,7 +508,7 @@ class Trigger extends PureComponent<TriggerProps, TriggerState> {
       },
       () => {
         callback && callback();
-      }
+      },
     );
   });
 
@@ -533,7 +530,7 @@ class Trigger extends PureComponent<TriggerProps, TriggerState> {
         },
         () => {
           callback && callback();
-        }
+        },
       );
     }, delay);
   };
@@ -554,7 +551,7 @@ class Trigger extends PureComponent<TriggerProps, TriggerState> {
               },
               () => {
                 this.showPopup(callback);
-              }
+              },
             );
           } else {
             this.setState(
@@ -563,7 +560,7 @@ class Trigger extends PureComponent<TriggerProps, TriggerState> {
               },
               () => {
                 callback && callback();
-              }
+              },
             );
           }
         } else {
@@ -971,7 +968,7 @@ class Trigger extends PureComponent<TriggerProps, TriggerState> {
       childrenPrefix,
       `${prefixCls}-position-${position}`,
       { [`${prefixCls}-rtl`]: rtl },
-      className
+      className,
     );
 
     const childrenComponent = isExistChildren && (
@@ -1061,7 +1058,7 @@ class Trigger extends PureComponent<TriggerProps, TriggerState> {
                     {
                       [`${childrenPrefix}-arrow`]: childrenPrefix,
                     },
-                    arrowProps?.className
+                    arrowProps?.className,
                   )}
                   style={{ ...this.arrowStyle, ...arrowProps?.style }}
                 />

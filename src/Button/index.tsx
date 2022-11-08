@@ -1,10 +1,9 @@
 import React, { useState, useContext, useEffect, useRef, ReactNode, forwardRef } from 'react';
-import { Loading3QuartersOutlined as IconLoading } from '@ant-design/icons';
+import { IconLoading } from '@eyas-design/icons';
 import cs from '../_util/classNames';
 import { ConfigContext } from '../config-provider';
 import type { ButtonProps } from './interface';
 import Group from './group';
-import './style/index';
 
 const regexTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;
 
@@ -14,7 +13,8 @@ function processChildren(children?: ReactNode) {
   let isPrevChildPure = false; // 上一个节点是否为string | number，默认不是
   React.Children.forEach(children, (child) => {
     const isCurrentChildPure = typeof child === 'number' || typeof child === 'string';
-    if (isCurrentChildPure && isPrevChildPure) { // 如果连续两个节点都出现字符串或者数字，则把他们拼接在一起
+    if (isCurrentChildPure && isPrevChildPure) {
+      // 如果连续两个节点都出现字符串或者数字，则把他们拼接在一起
       const lastIndex = childrenList.length - 1;
       const lastChild = childrenList[lastIndex];
       childrenList[lastIndex] = `${lastChild}${child}`;
@@ -24,17 +24,14 @@ function processChildren(children?: ReactNode) {
     isPrevChildPure = isCurrentChildPure;
   });
 
-  return React.Children.map(childrenList, (child) => (typeof child === 'string' ? <span>{child}</span> : child));
+  return React.Children.map(childrenList, (child) =>
+    typeof child === 'string' ? <span>{child}</span> : child,
+  );
 }
 
 function Button(props: ButtonProps, ref: any) {
   // 全局默认属性
-  const {
-    getPrefixCls,
-    size: ctxSize,
-    autoInsertSpaceInButton,
-    rtl,
-  } = useContext(ConfigContext);
+  const { getPrefixCls, size: ctxSize, autoInsertSpaceInButton, rtl } = useContext(ConfigContext);
   const {
     hoverable = false,
     style,
@@ -79,16 +76,17 @@ function Button(props: ButtonProps, ref: any) {
   const prefixCls = getPrefixCls('btn');
 
   const getBtnIcon = (icon) => {
-    if (!icon || ['string', 'number', 'boolean'].includes(typeof icon)) return icon
+    if (!icon || ['string', 'number', 'boolean'].includes(typeof icon)) return icon;
     return React.cloneElement(icon, {
-      className: cs(
-        icon?.props?.className,
-        `${prefixCls}-icon`
-      )
+      className: cs(icon?.props?.className, `${prefixCls}-icon`),
     });
-  }
+  };
 
-  const iconNode = loading ? <IconLoading spin className={`${prefixCls}-icon`} /> : getBtnIcon(icon);
+  const iconNode = loading ? (
+    <IconLoading spin className={`${prefixCls}-icon`} />
+  ) : (
+    getBtnIcon(icon)
+  );
 
   const _type = type === 'default' ? 'secondary' : type;
 
@@ -109,7 +107,7 @@ function Button(props: ButtonProps, ref: any) {
       [`${prefixCls}-two-chinese-chars`]: isTwoCNChar,
       [`${prefixCls}-rtl`]: rtl,
     },
-    className
+    className,
   );
 
   const handleClick: React.MouseEventHandler<HTMLElement> = (event: any): void => {
@@ -165,7 +163,6 @@ function Button(props: ButtonProps, ref: any) {
 
 const ForwardRefButton = forwardRef<unknown, ButtonProps>(Button);
 
-
 const ButtonComponent = ForwardRefButton as typeof ForwardRefButton & {
   __BYTE_BUTTON: boolean;
   Group: typeof Group;
@@ -180,5 +177,3 @@ ButtonComponent.displayName = 'Button';
 export default ButtonComponent;
 
 export { ButtonProps };
-
-

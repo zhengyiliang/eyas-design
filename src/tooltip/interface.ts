@@ -1,5 +1,5 @@
 import { CSSProperties, ReactNode } from 'react';
-import { TriggerProps } from '../Trigger';
+import { TriggerProps } from '../trigger';
 
 /**
  * @title Tooltip
@@ -30,18 +30,18 @@ export interface TooltipProps {
    * @default top
    */
   position?:
-  | 'top'
-  | 'tl'
-  | 'tr'
-  | 'bottom'
-  | 'bl'
-  | 'br'
-  | 'left'
-  | 'lt'
-  | 'lb'
-  | 'right'
-  | 'rt'
-  | 'rb';
+    | 'top'
+    | 'tl'
+    | 'tr'
+    | 'bottom'
+    | 'bl'
+    | 'br'
+    | 'left'
+    | 'lt'
+    | 'lb'
+    | 'right'
+    | 'rt'
+    | 'rb';
   /**
    * @description 迷你尺寸
    */

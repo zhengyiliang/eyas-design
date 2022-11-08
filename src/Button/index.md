@@ -37,12 +37,13 @@ Button 可以嵌入图表，在只设置图标而没有 children 时，按钮得
 
 ```tsx
 import React from 'react';
-import { Button, Space, Icon } from 'eyas-ui';
+import { Button, Space } from 'eyas-ui';
+import { IconPlus, IconDelete } from '@eyas-design/icons';
 
 export default () => (
   <Space size="large">
-    <Button type="primary" icon={<Icon type="PlusOutlined"/>} />
-    <Button type="primary" icon={<Icon type="DeleteOutlined" />}>
+    <Button type="primary" icon={<IconPlus />} />
+    <Button type="primary" icon={<IconDelete />}>
       Delete
     </Button>
   </Space>
@@ -55,12 +56,13 @@ Button 有多种形状，`square`-长方形(**默认**)，`circle`-圆形，`rou
 
 ```tsx
 import React from 'react';
-import { Button, Space, Icon } from 'eyas-ui';
+import { Button, Space } from 'eyas-ui';
+import { IconPlus } from '@eyas-design/icons';
 
 export default () => (
   <Space size="large">
-    <Button type="primary" icon={<Icon type="PlusOutlined" />} />
-    <Button shape="circle" type="primary" icon={<Icon type="PlusOutlined" />} />
+    <Button type="primary" icon={<IconPlus />} />
+    <Button shape="circle" type="primary" icon={<IconPlus />} />
     <Button shape="round" type="primary">
       Primary
     </Button>
@@ -248,7 +250,8 @@ export default App;
 
 ```tsx
 import React, { useState } from 'react';
-import { Button, Divider, Icon } from 'eyas-ui';
+import { Button, Divider } from 'eyas-ui';
+import { IconPlus } from '@eyas-design/icons';
 
 function App() {
   const [loading1, setLoading1] = useState(false);
@@ -304,7 +307,7 @@ function App() {
         Click Me
       </Button>
       <Button type="primary" loading={loading2} onClick={onClickBtn2} style={{ margin: 24 }}>
-        {!loading2 && <Icon type="PlusOutlined" />}Click Me
+        {!loading2 && <IconPlus />}Click Me
       </Button>
       <Divider>loading fixed width</Divider>
       <Button
@@ -329,7 +332,16 @@ export default App;
 
 ```tsx
 import React from 'react';
-import { Button, Space, Icon } from 'eyas-ui';
+import { Button, Space } from 'eyas-ui';
+import {
+  IconDown,
+  IconMore,
+  IconStar,
+  IconRight,
+  IconLeft,
+  IconMessage,
+  IconSettings,
+} from '@eyas-design/icons';
 const ButtonGroup = Button.Group;
 
 const App = () => {
@@ -338,37 +350,37 @@ const App = () => {
       <Space size="large">
         <ButtonGroup>
           <Button>Publish</Button>
-          <Button icon={<Icon type="DownOutlined" />} />
+          <Button icon={<IconDown />} />
         </ButtonGroup>
         <ButtonGroup>
           <Button type="secondary">Publish</Button>
-          <Button type="secondary" icon={<Icon type="MoreOutlined" />} />
+          <Button type="secondary" icon={<IconMore />} />
         </ButtonGroup>
       </Space>
       <ButtonGroup>
         <Button type="primary">Publish</Button>
-        <Button type="primary" icon={<Icon type="DownOutlined" />} />
+        <Button type="primary" icon={<IconDown />} />
       </ButtonGroup>
       <Space size="large">
         <ButtonGroup>
-          <Button type="primary" icon={<Icon type="LeftOutlined" />} shape="round" style={{ padding: '0 8px' }}>
+          <Button type="primary" icon={<IconLeft />} shape="round" style={{ padding: '0 8px' }}>
             Prev
           </Button>
           <Button type="primary" shape="round" style={{ padding: '0 8px' }}>
-            Next
-            <Icon type="RightOutlined" />
+            Next &nbsp;
+            <IconRight />
           </Button>
         </ButtonGroup>
         <ButtonGroup>
-          <Button type="primary" icon={<Icon type="StarOutlined" />} />
-          <Button type="primary" icon={<Icon type="MessageOutlined" />} />
-          <Button type="primary" icon={<Icon type="SettingOutlined" />} />
+          <Button type="primary" icon={<IconStar />} />
+          <Button type="primary" icon={<IconMessage />} />
+          <Button type="primary" icon={<IconSettings />} />
         </ButtonGroup>
         <ButtonGroup>
-          <Button type="primary" icon={<Icon type="StarOutlined" />}>
+          <Button type="primary" icon={<IconStar />}>
             Favorite
           </Button>
-          <Button type="primary" icon={<Icon type="SettingOutlined" />}>
+          <Button type="primary" icon={<IconSettings />}>
             Setting
           </Button>
         </ButtonGroup>

@@ -18,3 +18,13 @@ export function pickTriggerPropsFromRest(rest) {
     'tabIndex',
   ]);
 }
+
+export const locale = {
+  Typography: {
+    copy: '复制',
+    copied: '已复制',
+    edit: '编辑',
+    fold: '折叠',
+    unfold: '展开',
+  },
+};

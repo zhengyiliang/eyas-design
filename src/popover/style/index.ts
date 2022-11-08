@@ -1,3 +1,3 @@
 import '../../style/index.less';
-import '../../Tooltip/style';
+import '../../tooltip/style';
 import './index.less';

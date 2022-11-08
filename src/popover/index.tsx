@@ -1,9 +1,8 @@
 import React, { forwardRef, PropsWithChildren, useContext } from 'react';
-import Tooltip from '../Tooltip';
+import Tooltip from '../tooltip';
 import { ConfigContext } from '../config-provider';
-import { PopoverProps } from './interface';
+import type { PopoverProps } from './interface';
 import cs from '../_util/classNames';
-import './style/index';
 
 function Popover(props: PropsWithChildren<PopoverProps>, ref) {
   const { getPrefixCls, rtl } = useContext(ConfigContext);

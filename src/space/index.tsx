@@ -3,14 +3,13 @@ import cs from '../_util/classNames';
 import { ConfigContext } from '../config-provider';
 import { isArray, isNumber, isNull, isUndefined } from '../_util/is';
 import type { SpaceProps, SpaceSize } from './interface';
-import './style/index';
 
 // 间距
 const MARGIN_SIZE = {
-  'mini': 4,
-  'small': 8,
-  'medium': 16,
-  'large': 24
+  mini: 4,
+  small: 8,
+  medium: 16,
+  large: 24,
 };
 
 function Space(props: SpaceProps, ref) {
@@ -39,44 +38,47 @@ function Space(props: SpaceProps, ref) {
       [`${prefixCls}-wrap`]: wrap,
       [`${prefixCls}-rtl`]: rtl,
     },
-    className
+    className,
   );
 
   // 获取间距
   function getMargin(size: SpaceSize) {
-    if (isNumber(size)) return size
-    return MARGIN_SIZE[size] ?? 8
+    if (isNumber(size)) return size;
+    return MARGIN_SIZE[size] ?? 8;
   }
 
   const childrenList = React.Children.toArray(children);
 
   function getMarginStyle(index) {
-
     const isLastOne = childrenList.length === index + 1;
     const marginDirection = rtl ? 'marginLeft' : 'marginRight';
 
     if (typeof size === 'string' || typeof size === 'number') {
       const margin = getMargin(size);
       if (wrap) {
-        return isLastOne ? { marginBottom: margin }
+        return isLastOne
+          ? { marginBottom: margin }
           : {
-            [`${marginDirection}`]: margin,
-            marginBottom: margin,
-          };
+              [`${marginDirection}`]: margin,
+              marginBottom: margin,
+            };
       }
-      return !isLastOne ? {
-        [direction === 'vertical' ? 'marginBottom' : marginDirection]: margin,
-      } : {};
+      return !isLastOne
+        ? {
+            [direction === 'vertical' ? 'marginBottom' : marginDirection]: margin,
+          }
+        : {};
     }
     if (isArray(size)) {
       const marginHorizontal = getMargin(size[0]);
       const marginBottom = getMargin(size[1]);
       if (wrap) {
-        return isLastOne ? { marginBottom }
+        return isLastOne
+          ? { marginBottom }
           : {
-            [`${marginDirection}`]: marginHorizontal,
-            marginBottom,
-          };
+              [`${marginDirection}`]: marginHorizontal,
+              marginBottom,
+            };
       }
       if (direction === 'vertical') {
         return { marginBottom };
@@ -110,4 +112,3 @@ SpaceComponent.displayName = 'Space';
 export { SpaceSize, SpaceProps };
 
 export default SpaceComponent;
-
