@@ -61,6 +61,7 @@ function Input(props: InputProps, ref) {
     maxLength,
     showWordLimit,
     allowClear,
+    size = ctxSize,
   } = props;
 
   const trueMaxLength = isObject(maxLength) ? maxLength.length : maxLength;
@@ -85,7 +86,6 @@ function Input(props: InputProps, ref) {
   };
 
   const prefixCls = getPrefixCls('input');
-  const size = props.size || ctxSize;
   const isCustomHeight = 'height' in props;
   let suffixElement = suffix;
   const valueLength = value ? value.length : 0;

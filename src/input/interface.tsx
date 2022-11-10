@@ -4,8 +4,7 @@ import { Omit } from '../_util/type';
 
 /**
  * @title Input
- * @zh **Input 接受所有原生的属性值**
- * @en **Input Accept all native attribute values**
+ * @description **Input 接受所有原生的属性值**
  */
 export interface InputProps
   extends Omit<
@@ -15,105 +14,85 @@ export interface InputProps
   style?: CSSProperties;
   className?: string | string[];
   /**
-   * @zh 允许清空输入框
-   * @en Whether allow clear value
+   * @description 允许清空输入框
    */
   allowClear?: boolean;
   /**
-   * @zh 是否禁用
-   * @en Whether the input is disabled
+   * @description 是否禁用
    */
   disabled?: boolean;
   /**
-   * @zh 是否只读
-   * @en Whether the input is readOnly
+   * @description 是否只读
    */
   readOnly?: boolean;
   /**
-   * @zh 默认值
-   * @en The initial input content
+   * @description 默认值
    */
-  defaultValue?: string;
+  default?: string;
   /**
-   * @zh 输入框提示文字
-   * @en Input box prompt text
+   * @description 输入框提示文字
    */
   placeholder?: string;
   /**
-   * @zh 是否是错误状态
-   * @en Whether the input is error
+   * @description 是否是错误状态
    */
   error?: boolean;
   /**
-   * @zh 输入时的回调
-   * @en Callback when user input
+   * @description 输入时的回调
    */
   onChange?: (value: string, e) => void;
   /**
-   * @zh 点击清除按钮的回调
-   * @en Callback when click clear button
+   * @description 点击清除按钮的回调
    */
   onClear?: () => void;
   /**
-   * @zh 按下回车键的回调
-   * @en Callback when press enter key
+   * @description 按下回车键的回调
    */
   onPressEnter?: (e) => void;
   /**
-   * @zh 输入框前添加元素
-   * @en The label text displayed before (on the left side of) the input field
+   * @description 输入框前添加元素
    */
   addBefore?: ReactNode;
   /**
-   * @zh 输入框后添加元素
-   * @en The label text displayed after (on the right side of) the input field
+   * @description 输入框后添加元素
    */
   addAfter?: ReactNode;
   /**
-   * @zh 添加前缀文字或者图标
-   * @en The prefix icon or text for the Input
+   * @description 添加前缀文字或者图标
    */
   prefix?: ReactNode;
   /**
-   * @zh 添加后缀文字或者图标
-   * @en The suffix icon or text for the Input
+   * @description 添加后缀文字或者图标
    */
   suffix?: ReactNode;
   /**
-   * @zh 输入框的值，受控模式
-   * @en The input content value
+   * @description 输入框的值，受控模式
    */
   value?: string;
   /**
-   * @zh 输入框前添加元素的样式
-   * @en The additional css style of the `addBefore` element
+   * @description 输入框前添加元素的样式
    */
   beforeStyle?: object;
   /**
-   * @zh 输入框后添加元素的样式
-   * @en The additional css style of the `addAfter` element
+   * @description 输入框后添加元素的样式
    */
   afterStyle?: object;
   /**
-   * @zh 输入框的尺寸
-   * @en The size of the input box
-   * @defaultValue default
+   * @description 输入框的尺寸
+   * @default default
    */
   size?: 'mini' | 'small' | 'default' | 'large';
   /**
-   * @zh 自定义输入框高度
+   * @description 自定义输入框高度
    * @en Custom input height
    */
   height?: number | string;
   /**
-   * @zh 输入框最大输入的长度；设置 `errorOnly`为 `true` 后，超过 `maxLength` 会展示 `error` 状态，并不限制用户输入。
-   * @en The max content length；After setting `errorOnly` to `true`, if `maxLength` is exceeded, the `error` status will be displayed, and user input will not be restricted.
-   * @version `errorOnly` in 2.23.0
+   * @description 输入框最大输入的长度；设置 `errorOnly`为 `true` 后，超过 `maxLength` 会展示 `error` 状态，并不限制用户输入。
    */
   maxLength?: number | { length: number; errorOnly?: boolean };
   /**
-   * @zh 配合 `maxLength`，显示字数统计
-   * @en With `maxLength`, Show word count.
+   * @description 配合 `maxLength`，显示字数统计
    */
   showWordLimit?: boolean;
 }
@@ -128,68 +107,53 @@ export interface TextAreaProps
   > {
   style?: CSSProperties;
   /**
-   * @zh 开启字数统计之后，会在 `textarea` 标签外包一层 `div`，`wrapperStyle` 用来配置这个 `div` 的样式。
-   * @en With `showWordLimit`, a `div` will be outside the `textarea` tag, and `wrapperStyle` is used to configure the style of it.
+   * @description 开启字数统计之后，会在 `textarea` 标签外包一层 `div`，`wrapperStyle` 用来配置这个 `div` 的样式。
    */
   wrapperStyle?: CSSProperties;
   className?: string | string[];
   /**
-   * @zh 是否禁用
-   * @en Whether the textarea is disabled
+   * @description 是否禁用
    */
   disabled?: boolean;
   /**
-   * @zh 默认值
-   * @en To set default value
+   * @description 默认值
    */
-  defaultValue?: string;
+  default?: string;
   /**
-   * @zh 值
-   * @en To set value
+   * @description 值
    */
   value?: string;
   /**
-   * @zh 是否自动调整输入框的高度
-   * @en Height autoSize feature
+   * @description 是否自动调整输入框的高度
    */
   autoSize?: boolean | { minRows?: number; maxRows?: number };
   /**
-   * @zh 是否是错误状态
-   * @en Whether the textarea is error
+   * @description 是否是错误状态
    */
   error?: boolean;
   /**
-   * @zh 输入框提示文字
-   * @en textarea placeholder
+   * @description 输入框提示文字
    */
   placeholder?: string;
   /**
-   * @zh 输入时的回调
-   * @en Callback when user input
+   * @description 输入时的回调
    */
   onChange?: (value: string, e) => void;
   /**
-   * @zh 按下回车键的回调
-   * @en Callback when press enter key
+   * @description 按下回车键的回调
    */
   onPressEnter?: (e) => void;
   /**
-   * @zh 输入框最大输入的长度；设置 `errorOnly`为 `true` 后，超过 `maxLength` 会展示 `error` 状态，并不限制用户输入。
-   * @en The max content length；After setting `errorOnly` to `true`, if `maxLength` is exceeded, the `error` status will be displayed, and user input will not be restricted.
-   * @version `errorOnly` in 2.23.0
+   * @description 输入框最大输入的长度；设置 `errorOnly`为 `true` 后，超过 `maxLength` 会展示 `error` 状态，并不限制用户输入。
    */
   maxLength?: number | { length: number; errorOnly?: boolean };
   showWordLimit?: boolean;
   /**
-   * @zh 允许清空输入框
-   * @en Whether allow clear the content
-   * @version 2.2.0
+   * @description 允许清空输入框
    */
   allowClear?: boolean;
   /**
-   * @zh 点击清除按钮的回调
-   * @en Callback when click clear button
-   * @version 2.2.0
+   * @description 点击清除按钮的回调
    */
   onClear?: () => void;
 }
@@ -201,63 +165,50 @@ export interface InputGroupProps {
   style?: CSSProperties;
   className?: string | string[];
   /**
-   * @zh 是否使用紧凑模式
-   * @en Whether to use compact mode
+   * @description 是否使用紧凑模式
    */
   compact?: boolean;
 }
 
 /**
  * @title Input.Search
- * @zh 包含 Input 组件所有参数
- * @en Contains all the parameters of the Input component
+ * @description 包含 Input 组件所有参数
  * @notExtends
  */
 export interface InputSearchProps extends InputProps {
   /**
-   * @zh 搜索时展示加载状态
-   * @en Show loading status when searching
-   * @version 2.6.0
+   * @description 搜索时展示加载状态
    */
   loading?: boolean;
   /**
-   * @zh 点击搜索按钮的回调
-   * @en Callback when click search button
+   * @description 点击搜索按钮的回调
    */
   onSearch?: (value: string) => void;
   /**
-   * @zh 搜索按钮
-   * @en Search button
-   * @version `ReactNode` in 2.6.0
+   * @description 搜索按钮
    */
   searchButton?: boolean | ReactNode;
 }
 
 /**
  * @title Input.Password
- * @zh 包含 Input 组件所有参数
- * @en Contains all the parameters of the Input component
  * @notExtends
  */
 export interface InputPasswordProps extends InputProps {
   /**
-   * @zh 是否显示切换密码可见状态的按钮
-   * @en Whether to display the button to switch the visible state of the password
+   * @description 是否显示切换密码可见状态的按钮
    */
   visibilityToggle?: boolean;
   /**
-   * @zh 初始是否显示
-   * @en To set default visibility
+   * @description 初始是否显示
    */
   defaultVisibility?: boolean;
   /**
-   * @zh 是否显示
-   * @zh To set visibility
+   * @description 是否显示
    */
   visibility?: boolean;
   /**
-   * @zh visibility 改变时触发
-   * @en Callback when visibility changes
+   * @description visibility 改变时触发
    */
   onVisibilityChange?: (visibility: boolean) => void;
 }

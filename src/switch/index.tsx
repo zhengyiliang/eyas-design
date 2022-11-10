@@ -14,7 +14,7 @@ function Switch(props: SwitchProps, ref) {
     children,
     style = {},
     disabled,
-    size: propSize,
+    size = ctxSize,
     loading,
     onChange,
     type = 'circle',
@@ -27,7 +27,6 @@ function Switch(props: SwitchProps, ref) {
 
   const prefixCls = getPrefixCls('switch');
 
-  const size = propSize || ctxSize;
   const [checked, setChecked] = useState<boolean>(props.defaultChecked);
 
   const mergedChecked = 'checked' in props ? props.checked : checked;
