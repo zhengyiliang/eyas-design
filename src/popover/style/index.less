@@ -1,4 +1,5 @@
 @import './token.less';
+@import '../../tooltip/style/index.less';
 
 @popover-prefix-cls: ~'@{prefix}-popover';
 @popconfirm-prefix-cls: ~'@{prefix}-popconfirm';
@@ -9,9 +10,9 @@
   }
 
   &-title {
-    font-size: @popup-font-title-size;
     color: @popup-color-title-text;
     font-weight: @font-weight-500;
+    font-size: @popup-font-title-size;
   }
 
   &-title + &-inner-content {
@@ -22,27 +23,27 @@
 .@{popover-prefix-cls},
 .@{popconfirm-prefix-cls} {
   &-content {
-    color: @popup-color-content-text;
-    background-color: @popup-color-content-bg;
-    box-shadow: @popup-shadow;
-    max-width: none;
-    width: 100%;
-    font-size: @popup-font-size;
-    border-radius: @popup-border-radius;
-    line-height: @line-height-base;
     box-sizing: border-box;
+    width: 100%;
+    max-width: none;
+    color: @popup-color-content-text;
+    font-size: @popup-font-size;
+    line-height: @line-height-base;
+    background-color: @popup-color-content-bg;
     border: @border-1 solid @popup-color-border;
+    border-radius: @popup-border-radius;
+    box-shadow: @popup-shadow;
 
     &-inner {
-      word-wrap: break-word;
       text-align: left;
+      word-wrap: break-word;
     }
   }
 
   &-arrow.@{prefix}-trigger-arrow {
+    z-index: 1;
     background-color: @popup-color-content-bg;
     border: @border-1 solid @popup-color-border;
-    z-index: 1;
   }
 }
 

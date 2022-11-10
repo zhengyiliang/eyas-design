@@ -9,12 +9,3 @@ export { default as Popover } from './popover';
 export { default as Tooltip } from './tooltip';
 
 import './style/index.less';
-import './button/style/index';
-import './divider/style/index';
-import './input/style/index';
-import './popover/style/index';
-import './space/style/index';
-import './switch/style/index';
-import './tooltip/style/index';
-import './trigger/style/index'; // 内部使用
-import './typography/style/index';

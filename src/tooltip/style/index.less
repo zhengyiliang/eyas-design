@@ -1,24 +1,25 @@
 @import './token.less';
+@import '../../trigger/style/index.less';
 
 .@{prefix}-tooltip {
   &-content {
     padding: @tooltip-padding-vertical @tooltip-padding-horizontal;
-    background-color: @tooltip-color-bg;
-    font-size: @tooltip-font-size;
-    border-radius: @tooltip-border-radius;
     color: @tooltip-color-text;
+    font-size: @tooltip-font-size;
     line-height: @line-height-base;
+    background-color: @tooltip-color-bg;
+    border-radius: @tooltip-border-radius;
     box-shadow: @shadow2-down;
 
     &-inner {
-      word-wrap: break-word;
       text-align: left;
+      word-wrap: break-word;
     }
   }
 
   &-mini {
-    font-size: @tooltip-mini-font-size;
     padding: @tooltip-mini-padding-vertical @tooltip-mini-padding-horizontal;
+    font-size: @tooltip-mini-font-size;
   }
 
   .@{prefix}-trigger-arrow&-arrow {
@@ -37,12 +38,11 @@
     }
 
     .@{prefix}-trigger {
-
       &[trigger-placement='top'] .@{prefix}-trigger-arrow.@{prefix}-tooltip-arrow,
       &[trigger-placement='tl'] .@{prefix}-trigger-arrow.@{prefix}-tooltip-arrow,
       &[trigger-placement='tr'] .@{prefix}-trigger-arrow.@{prefix}-tooltip-arrow {
-        border-bottom: @border-1 solid var(~'@{eyas-cssvars-prefix}-color-neutral-3');
         border-right: @border-1 solid var(~'@{eyas-cssvars-prefix}-color-neutral-3');
+        border-bottom: @border-1 solid var(~'@{eyas-cssvars-prefix}-color-neutral-3');
       }
 
       &[trigger-placement='bottom'] .@{prefix}-trigger-arrow.@{prefix}-tooltip-arrow,
@@ -62,8 +62,8 @@
       &[trigger-placement='right'] .@{prefix}-trigger-arrow.@{prefix}-tooltip-arrow,
       &[trigger-placement='rt'] .@{prefix}-trigger-arrow.@{prefix}-tooltip-arrow,
       &[trigger-placement='rb'] .@{prefix}-trigger-arrow.@{prefix}-tooltip-arrow {
-        border-left: @border-1 solid var(~'@{eyas-cssvars-prefix}-color-neutral-3');
         border-bottom: @border-1 solid var(~'@{eyas-cssvars-prefix}-color-neutral-3');
+        border-left: @border-1 solid var(~'@{eyas-cssvars-prefix}-color-neutral-3');
       }
     }
   }
