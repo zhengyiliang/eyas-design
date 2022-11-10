@@ -201,4 +201,11 @@ export default App;
 
 ## API
 
-**Divider** | 参数名 | 描述 | 类型 | 默认值 | | --- | --- | --- | --- | | orientation | 分割线文字的位置 | `left \| right \| center` | `center` | | type | 分割线的类型，是水平还是竖直 | `horizontal \| vertical` | `horizontal` | | className | 节点类名 | `string \| string[]` | `--` | | style | 节点样式 | `CSSProperties` | `--` |
+**Divider**
+
+| 参数名      | 描述                         | 类型                      | 默认值       |
+| ----------- | ---------------------------- | ------------------------- | ------------ |
+| orientation | 分割线文字的位置             | `left \| right \| center` | `center`     |
+| type        | 分割线的类型，是水平还是竖直 | `horizontal \| vertical`  | `horizontal` |
+| className   | 节点类名                     | `string \| string[]`      | `--`         |
+| style       | 节点样式                     | `CSSProperties`           | `--`         |
