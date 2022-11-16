@@ -14,44 +14,13 @@ nav:
 
 间距组件的基本用法
 
-```tsx
-import React from 'react';
-import { Space, Button, Switch, Typography } from 'eyas-ui';
-
-const App = () => {
-  return (
-    <Space>
-      <Typography.Text>Space:</Typography.Text>
-      <Button type="primary">Item1</Button>
-      <Button type="primary">Item2</Button>
-      <Switch defaultChecked />
-    </Space>
-  );
-};
-
-export default App;
-```
+<code src="./__demo__/basics.tsx">
 
 ## 垂直间距
 
 可以设置垂直方向排列的间距
 
-```tsx
-import React from 'react';
-import { Space, Button } from 'eyas-ui';
-
-const App = () => {
-  return (
-    <Space direction="vertical">
-      <Button type="primary">Item1</Button>
-      <Button type="primary">Item2</Button>
-      <Button type="primary">Item3</Button>
-    </Space>
-  );
-};
-
-export default App;
-```
+<code src="./__demo__/vertical.tsx">
 
 ## API
 

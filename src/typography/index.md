@@ -13,207 +13,31 @@ nav:
 
 排版组件用于展示标题、段落、文本内容，这里展示了排版的组合使用。
 
-```tsx
-import React from 'react';
-import { Typography } from 'eyas-ui';
-const { Title, Paragraph, Text } = Typography;
-
-const App = () => {
-  return (
-    <Typography style={{ marginTop: -40 }}>
-      <Title>Design system</Title>
-      <Paragraph>
-        A design is a plan or specification for the construction of an object or system or for the
-        implementation of an activity or process, or the result of that plan or specification in the
-        form of a prototype, product or process. The verb to design expresses the process of
-        developing a design.
-      </Paragraph>
-      <Paragraph>
-        In some cases, the direct construction of an object without an explicit prior plan (such as
-        in craftwork, some engineering, coding, and graphic design) may also be considered
-        <Text bold>to be a design activity.</Text>
-      </Paragraph>
-      <Title heading={2}>ArcoDesign</Title>
-      <Paragraph>
-        The ArcoDesign component library defines a set of default particle variables, and a custom
-        theme is to <Text mark>customize</Text> and <Text underline>overwrite</Text> this variable
-        list.
-      </Paragraph>
-      <Paragraph blockquote>
-        A design is a plan or specification for the construction of an object or system or for the
-        implementation of an activity or process, or the result of that plan or specification in the
-        form of a <Text code>prototype</Text>, <Text code>product</Text> or
-        <Text code>process</Text>. The verb to design expresses the process of developing a design.
-      </Paragraph>
-      <Paragraph mark underline delete>
-        A design is a plan or specification for the construction of an object or system or for the
-        implementation of an activity or process.
-      </Paragraph>
-      <Paragraph>
-        <ul>
-          <li>
-            Architectural blueprints
-            <ul>
-              <li>Architectural blueprints</li>
-            </ul>
-          </li>
-          <li>Engineering drawings</li>
-          <li>Business processes</li>
-        </ul>
-      </Paragraph>
-      <Paragraph>
-        <ol>
-          <li>Architectural blueprints</li>
-          <li>Engineering drawings</li>
-          <li>Business processes</li>
-        </ol>
-      </Paragraph>
-    </Typography>
-  );
-};
-
-export default App;
-```
+<code src="./__demo__/group">
 
 ## 标题
 
 展示不同级别的标题。
 
-```tsx
-import React from 'react';
-import { Typography } from 'eyas-ui';
-
-const App = () => {
-  return (
-    <Typography>
-      <Typography.Title>H1. The Pragmatic Romanticism</Typography.Title>
-      <Typography.Title heading={2}>H2. The Pragmatic Romanticism</Typography.Title>
-      <Typography.Title heading={3}>H3. The Pragmatic Romanticism</Typography.Title>
-      <Typography.Title heading={4}>H4. The Pragmatic Romanticism</Typography.Title>
-      <Typography.Title heading={5}>H5. The Pragmatic Romanticism</Typography.Title>
-      <Typography.Title heading={6}>H6. The Pragmatic Romanticism</Typography.Title>
-    </Typography>
-  );
-};
-
-export default App;
-```
+<code src="./__demo__/title">
 
 ## 文本
 
 不同样式的文本以及超链接组件。
 
-```tsx
-import React from 'react';
-import { Typography, Divider } from 'eyas-ui';
-
-function Layout(props) {
-  return React.Children.map(props.children, (child) => {
-    return <div style={{ marginBottom: 10 }}>{child}</div>;
-  });
-}
-
-const App = () => {
-  return (
-    <Layout>
-      <Typography.Text>Arco Design</Typography.Text>
-      <Typography.Text type="secondary">Secondary</Typography.Text>
-      <Typography.Text type="primary">Primary</Typography.Text>
-      <Typography.Text type="success">Success</Typography.Text>
-      <Typography.Text type="warning">Warning</Typography.Text>
-      <Typography.Text type="error">Error</Typography.Text>
-      <Typography.Text bold>Bold</Typography.Text>
-      <Typography.Text disabled>Disabled</Typography.Text>
-      <Typography.Text mark>Mark</Typography.Text>
-      <Typography.Text underline>Underline</Typography.Text>
-      <Typography.Text delete>Line through</Typography.Text>
-      <Typography.Text code>Code snippet</Typography.Text>
-    </Layout>
-  );
-};
-
-export default App;
-```
+<code src="./__demo__/text">
 
 ## 段落
 
 文本段落样式。
 
-```tsx
-import React from 'react';
-import { Typography, Divider } from 'eyas-ui';
-const { Title, Paragraph } = Typography;
-
-const App = () => {
-  return (
-    <Typography>
-      <Title heading={5}>Default</Title>
-      <Paragraph>
-        A design is a plan or specification for the construction of an object or system or for the
-        implementation of an activity or process, or the result of that plan or specification in the
-        form of a prototype, product or process. The verb to design expresses the process of
-        developing a design. In some cases, the direct construction of an object without an explicit
-        prior plan (such as in craftwork, some engineering, coding, and graphic design) may also be
-        considered to be a design activity.
-      </Paragraph>
-      <Title heading={5}>Secondary</Title>
-      <Paragraph type="secondary">
-        A design is a plan or specification for the construction of an object or system or for the
-        implementation of an activity or process, or the result of that plan or specification in the
-        form of a prototype, product or process. The verb to design expresses the process of
-        developing a design. In some cases, the direct construction of an object without an explicit
-        prior plan (such as in craftwork, some engineering, coding, and graphic design) may also be
-        considered to be a design activity.
-      </Paragraph>
-      <Title heading={5}>Spacing default</Title>
-      <Paragraph>
-        A design is a plan or specification for the construction of an object or system or for the
-        implementation of an activity or process, or the result of that plan or specification in the
-        form of a prototype, product or process. The verb to design expresses the process of
-        developing a design. In some cases, the direct construction of an object without an explicit
-        prior plan (such as in craftwork, some engineering, coding, and graphic design) may also be
-        considered to be a design activity.
-      </Paragraph>
-      <Title heading={5}>Spacing close</Title>
-      <Paragraph type="secondary" spacing="close">
-        A design is a plan or specification for the construction of an object or system or for the
-        implementation of an activity or process, or the result of that plan or specification in the
-        form of a prototype, product or process. The verb to design expresses the process of
-        developing a design.
-      </Paragraph>
-    </Typography>
-  );
-};
-
-export default App;
-```
+<code src="./__demo__/paragraph">
 
 ## 可交互
 
 提供复制、编辑文本等功能
 
-```tsx
-import React, { useState } from 'react';
-import { Typography, Divider } from 'eyas-ui';
-
-function App() {
-  const [str, setStr] = useState('Click the icon to edit this text.');
-  return (
-    <Typography>
-      <Typography.Paragraph copyable>Click the icon to copy this text.</Typography.Paragraph>
-      <Typography.Paragraph
-        editable={{
-          onChange: setStr,
-        }}
-      >
-        {str}
-      </Typography.Paragraph>
-    </Typography>
-  );
-}
-
-export default App;
-```
+<code src="./__demo__/operate">
 
 ## 省略
 
@@ -221,35 +45,7 @@ export default App;
 
 注意：父元素 `flex` 模式下， 省略的 `Typography` 的 `ellipsis` 场景会收到影响，可以添加`width: 100%` 使 `Typography` 充满整个父元素。
 
-```tsx
-import React from 'react';
-import { Typography } from 'eyas-ui';
-
-const mockText =
-  'A design is a plan or specification for the construction of an object or system or for the implementation of an activity or process, or the result of that plan or specification in the form of a prototype, product or process. The verb to design expresses the process of developing a design. The verb to design expresses the process of developing a design. A design is a plan or specification for the construction of an object or system or for the implementation of an activity or process, or the result of that plan or specification in the form of a prototype, product or process. The verb to design expresses the process of developing a design. The verb to design expresses the process of developing a design.';
-const mockTitle =
-  ' A design is a plan or specification for the construction of an object or system or for the implementation of an activity or process.';
-
-const App = () => {
-  return (
-    <div>
-      <Typography.Title heading={4} ellipsis={{ wrapper: 'span' }}>
-        {mockTitle}
-      </Typography.Title>
-      <Typography.Paragraph
-        ellipsis={{ rows: 2, showTooltip: true, expandable: true, wrapper: 'span' }}
-      >
-        {mockText}
-      </Typography.Paragraph>
-      <Typography.Paragraph ellipsis={{ suffix: '---width: 100%', wrapper: 'span' }}>
-        {mockTitle}
-      </Typography.Paragraph>
-    </div>
-  );
-};
-
-export default App;
-```
+<code src="./__demo__/ellipsis">
 
 ## API
 

@@ -13,177 +13,43 @@ nav:
 
 最基础的应用
 
-```tsx
-import React from 'react';
-import { Switch } from 'eyas-ui';
-const App = () => {
-  return <Switch />;
-};
-
-export default App;
-```
+<code src="./__demo__/basics">
 
 ## 不同类型
 
 有三种类型的开关可供选择。
 
-```tsx
-import React from 'react';
-import { Switch, Space } from 'eyas-ui';
-const App = () => {
-  return (
-    <Space size="large">
-      <Switch />
-      <Switch type="round" />
-      <Switch type="line" />
-    </Space>
-  );
-};
-
-export default App;
-```
+<code src="./__demo__/shape">
 
 ## 禁用状态
 
 通过 `disabled` 设置 `Switch` 为禁用状态。
 
-```tsx
-import React from 'react';
-import { Switch, Space } from 'eyas-ui';
-
-const App = () => {
-  return (
-    <Space size="large">
-      <Switch disabled />
-      <Switch checked disabled />
-      <Switch type="round" disabled />
-      <Switch type="round" checked disabled />
-      <Switch type="line" disabled />
-      <Switch type="line" checked disabled />
-    </Space>
-  );
-};
-
-export default App;
-```
+<code src="./__demo__/disabled">
 
 ## 不同尺寸的开关
 
 通过指定 `size` 可以得到不同尺寸的开关。
 
-```tsx
-import React from 'react';
-import { Switch, Space } from 'eyas-ui';
-
-const App = () => {
-  return (
-    <Space size="large">
-      <Switch />
-      <Switch size="small" />
-      <Switch type="round" />
-      <Switch size="small" type="round" />
-      <Switch type="line" />
-      <Switch size="small" type="line" />
-    </Space>
-  );
-};
-
-export default App;
-```
+<code src="./__demo__/size">
 
 ## 自定义文案
 
 自定义开关打开（关闭）时需要显示的文字或者图标。
 
-```tsx
-import React from 'react';
-import { Switch, Space, Icon } from 'eyas-ui';
-
-const App = () => {
-  return (
-    <Space size="large">
-      <Switch checkedText="ON" uncheckedText="OFF" />
-      <Switch checkedText="1" uncheckedText="0" type="round" defaultChecked />
-      <Switch
-        checkedText={<Icon type="CheckOutlined" />}
-        uncheckedText={<Icon type="CloseOutlined" />}
-        defaultChecked
-      />
-    </Space>
-  );
-};
-
-export default App;
-```
+<code src="./__demo__/custom">
 
 ## 带图标的开关
 
 自定义开关按钮上显示的图标。
 
-```tsx
-import React from 'react';
-import { Switch, Space, Icon } from 'eyas-ui';
-
-const App = () => {
-  return (
-    <Space size="large">
-      <Switch
-        checkedIcon={<Icon type="CheckOutlined" />}
-        uncheckedIcon={<Icon type="CloseOutlined" />}
-        defaultChecked
-      />
-      <Switch
-        type="round"
-        checkedIcon={<Icon type="CheckOutlined" />}
-        uncheckedIcon={<Icon type="CloseOutlined" />}
-        defaultChecked
-      />
-      <Switch
-        type="line"
-        checkedIcon={<Icon type="CheckOutlined" />}
-        uncheckedIcon={<Icon type="CloseOutlined" />}
-        defaultChecked
-      />
-    </Space>
-  );
-};
-
-export default App;
-```
+<code src="./__demo__/icon">
 
 ## 加载中
 
 开关处于加载中状态，不可点击。
 
-```tsx
-import React from 'react';
-import { Switch, Divider, Space } from 'eyas-ui';
-
-const App = () => {
-  return (
-    <Space size="large" direction="vertical">
-      <Space size="large">
-        <Switch loading defaultChecked />
-        <Switch loading />
-        <Switch loading type="round" defaultChecked />
-        <Switch loading type="round" />
-        <Switch loading type="line" defaultChecked />
-        <Switch loading type="line" />
-      </Space>
-      <Space size="large">
-        <Switch loading size="small" defaultChecked />
-        <Switch loading size="small" />
-        <Switch loading size="small" type="round" defaultChecked />
-        <Switch loading size="small" type="round" />
-        <Switch loading size="small" type="line" defaultChecked />
-        <Switch loading size="small" type="line" />
-      </Space>
-    </Space>
-  );
-};
-
-export default App;
-```
+<code src="./__demo__/loading">
 
 ## API
 

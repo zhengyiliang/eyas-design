@@ -13,33 +13,10 @@ nav:
 
 通过鼠标或键盘输入内容。
 
-```tsx
-import React from 'react';
-import { Input } from 'eyas-ui';
-
-const App = () => {
-  return <Input style={{ width: 350 }} allowClear placeholder="Please Enter something" />;
-};
-
-export default App;
-```
+<code src="./__demo__/basics">
 
 ## 输入框状态
 
 不同的输入框状态
 
-```tsx
-import React from 'react';
-import { Input, Space } from 'eyas-ui';
-
-const App = () => {
-  return (
-    <Space wrap>
-      <Input style={{ width: 350 }} error placeholder="error status" />
-      <Input style={{ width: 350 }} disabled placeholder="disabled input" />
-    </Space>
-  );
-};
-
-export default App;
-```
+<code src="./__demo__/status">

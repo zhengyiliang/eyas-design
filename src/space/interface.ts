@@ -14,7 +14,7 @@ export interface SpaceProps {
   align?: 'start' | 'end' | 'center' | 'baseline';
   /**
    * @description 间距方向
-   * @defaul horizontal
+   * @default horizontal
    */
   direction?: 'vertical' | 'horizontal';
   /**

@@ -1,11 +1,12 @@
 import { defineConfig } from 'dumi';
+// import path from 'path';
 // const chainWebpack = require('webpack-chain');
 export default defineConfig({
   // chainWebpack(memo) {
   //   // 设置 alias
   //   memo.resolve
   //     .alias
-  //     .set('react-pro-components', path.resolve(__dirname, 'src', 'components'))
+  //     .set('eyas-ui', path.resolve(__dirname, 'src'))
   // },
   title: 'eyas-ui',
   hash: true,
