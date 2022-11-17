@@ -1,0 +1,239 @@
+@import '../../grid/style/index.less';
+
+@import './token.less';
+
+@form-prefix-cls: ~'@{prefix}-form';
+
+.@{form-prefix-cls} {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &-inline {
+    flex-flow: row wrap;
+  }
+
+  &-inline &-item {
+    width: auto;
+    margin-bottom: @form-inline-margin-item-bottom;
+  }
+
+  &-item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: @form-size-default-margin-item-bottom;
+
+    &&-hidden {
+      display: none;
+    }
+
+    > .@{form-prefix-cls}-label-item {
+      padding-right: @form-margin-label-right;
+    }
+
+    &&-error {
+      margin-bottom: 0;
+    }
+  }
+
+  &-item-wrapper-flex.@{prefix}-col {
+    flex: 1;
+  }
+
+  /** size style **/
+
+  &-size-mini &-label-item {
+    font-size: @form-size-mini-font-label-size;
+    line-height: @form-size-mini-size-item-height;
+
+    > label {
+      font-size: @form-size-mini-font-label-size;
+    }
+  }
+
+  &-size-mini &-item-control {
+    min-height: @form-size-mini-size-item-height;
+  }
+
+  &-size-small &-label-item {
+    line-height: @form-size-small-size-item-height;
+
+    > label {
+      font-size: @form-size-small-font-label-size;
+    }
+  }
+
+  &-size-small &-item-control {
+    min-height: @form-size-small-size-item-height;
+  }
+
+  &-size-large &-label-item {
+    line-height: @form-size-large-size-item-height;
+
+    > label {
+      font-size: @form-size-large-font-label-size;
+    }
+  }
+
+  &-size-large &-item-control {
+    min-height: @form-size-large-size-item-height;
+  }
+
+  &-extra {
+    margin-top: @form-margin-extra-top;
+    color: @form-color-extra-text;
+    font-size: @form-font-extra-text-size;
+  }
+
+  &-message {
+    min-height: @form-size-default-margin-item-bottom;
+    color: @form-color-tip-text_error;
+    font-size: @form-font-error-text-size;
+    line-height: @form-size-default-margin-item-bottom;
+
+    &-help {
+      color: @form-color-extra-text;
+    }
+
+    + .@{form-prefix-cls}-extra {
+      margin-top: 0;
+      margin-bottom: @form-margin-extra-bottom;
+    }
+  }
+
+  &-layout-vertical {
+    display: block;
+
+    > .@{form-prefix-cls}-label-item {
+      margin-bottom: @form-vertical-margin-label-bottom;
+      padding: 0;
+      line-height: @line-height-base;
+      white-space: normal;
+      text-align: left;
+    }
+  }
+
+  &-layout-inline {
+    margin-right: @form-inline-margin-item-right;
+  }
+
+  &-label-item {
+    line-height: @form-size-default-size-item-height;
+    white-space: nowrap;
+    text-align: right;
+
+    &-flex.@{prefix}-col {
+      flex: 0;
+
+      > label {
+        white-space: nowrap;
+      }
+    }
+
+    > label {
+      color: @form-color-text-label;
+      font-size: @form-size-default-font-label-size;
+      white-space: normal;
+    }
+
+    .@{form-prefix-cls}-item-symbol {
+      color: @color-danger-6;
+      font-size: @font-size-body-1;
+      line-height: 1;
+
+      svg {
+        transform: scale(0.5);
+      }
+    }
+  }
+
+  &-label-item-left {
+    text-align: left;
+  }
+
+  &-item-control {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: @form-size-default-size-item-height;
+
+    &-children {
+      flex: 1;
+      width: 100%;
+    }
+
+    &-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+    }
+  }
+
+  /** slider display: block **/
+
+  .@{prefix}-slider {
+    display: block;
+  }
+}
+
+@import './status.less';
+
+.formblink-enter,
+.formblink-appear {
+  opacity: 0;
+}
+
+.formblink-enter-active,
+.formblink-appear-active {
+  opacity: 1;
+  transition: opacity @transition-duration-3 @transition-timing-function-linear;
+}
+
+.formblink-enter-done {
+  animation: ~'@{prefix}-form-blink' @transition-duration-5 @transition-timing-function-linear;
+}
+
+@keyframes ~'@{prefix}-form-blink' {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.@{form-prefix-cls}-rtl {
+  direction: rtl;
+
+  .@{form-prefix-cls} {
+    &-item {
+      > .@{form-prefix-cls}-label-item {
+        padding-right: 0;
+        padding-left: @form-margin-label-right;
+      }
+    }
+
+    &-label-item {
+      text-align: left;
+    }
+  }
+
+  .@{form-prefix-cls}-layout-vertical {
+    > .@{form-prefix-cls}-label-item {
+      text-align: right;
+    }
+  }
+
+  .@{form-prefix-cls}-layout-inline {
+    margin-right: 0;
+    margin-left: @form-inline-margin-item-right;
+  }
+}

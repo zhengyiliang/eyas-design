@@ -17,9 +17,9 @@ const App = () => {
         in craftwork, some engineering, coding, and graphic design) may also be considered
         <Text bold>to be a design activity.</Text>
       </Paragraph>
-      <Title heading={2}>ArcoDesign</Title>
+      <Title heading={2}>EyasDesign</Title>
       <Paragraph>
-        The ArcoDesign component library defines a set of default particle variables, and a custom
+        The EyasDesign component library defines a set of default particle variables, and a custom
         theme is to <Text mark>customize</Text> and <Text underline>overwrite</Text> this variable
         list.
       </Paragraph>

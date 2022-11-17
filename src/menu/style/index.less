@@ -1,0 +1,586 @@
+@import '../../dropdown/style/index.less';
+@import '../../tooltip/style/index.less';
+@import './token.less';
+
+@menu-prefix-cls: ~'@{prefix}-menu';
+
+.applyStyleToItem(@style) {
+  .@{menu-prefix-cls}-item,
+  .@{menu-prefix-cls}-group-title,
+  .@{menu-prefix-cls}-pop-header,
+  .@{menu-prefix-cls}-inline-header {
+    @style();
+  }
+}
+
+.menu-focus-visible-style() {
+  box-shadow: 0 0 0 2px @color-primary-6 inset;
+}
+
+@keyframes ~'@{prefix}-menu-selected-item-label-enter' {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.@{menu-prefix-cls} {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: @menu-font-size;
+  line-height: @menu-line-height;
+  transition: width @transition-duration-2 @transition-timing-function-standard;
+
+  // 设置菜单层级的缩进
+  &-indent {
+    display: inline-block;
+    width: @menu-item-indent-spacing;
+  }
+
+  .text-color-transition() {
+    transition: color @transition-duration-2 @transition-timing-function-linear;
+  }
+
+  // menu-item 一些与 theme 和 mode 无关的样式
+  .item-base() {
+    @style: {
+      position: relative;
+      box-sizing: border-box;
+      border-radius: @menu-border-radius;
+      cursor: pointer;
+
+      &.@{menu-prefix-cls}-disabled {
+        cursor: not-allowed;
+      }
+
+      &.@{menu-prefix-cls}-selected {
+        font-weight: @menu-font-weight-item-selected;
+        .text-color-transition();
+
+        svg {
+          .text-color-transition();
+        }
+      }
+
+      .@{prefix}-icon {
+        margin-right: @menu-margin-right-item-prefix-icon;
+      }
+    };
+
+    .applyStyleToItem(@style);
+  }
+
+  .item-mode(@mode) {
+    @style-both: {
+      padding: 0~ '@{menu-@{mode}-item-padding-horizontal}';
+      line-height: ~'@{menu-@{mode}-item-height}';
+
+      .@{menu-prefix-cls}-icon-suffix .@{prefix}-icon {
+        margin-right: 0;
+      }
+    };
+
+    @style-vertical-only: {
+      margin-bottom: @menu-item-gap;
+      .text-ellipsis();
+
+      .@{menu-prefix-cls}-item-inner {
+        .text-ellipsis();
+
+        width: 100%;
+      }
+
+      .@{menu-prefix-cls}-icon-suffix {
+        position: absolute;
+        top: 50%;
+        right: @menu-vertical-item-padding-horizontal;
+        transform: translateY(-50%);
+
+        &.is-open {
+          transform: translateY(-50%) rotate(180deg);
+        }
+      }
+    };
+
+    @style-horizontal-only: {
+      .@{prefix}-icon {
+        margin-right: @menu-horizontal-margin-right-item-prefix-icon;
+      }
+
+      .@{menu-prefix-cls}-icon-suffix {
+        margin-left: @menu-margin-left-item-suffix-icon;
+      }
+    };
+
+    .applyStyleToItem(@style-both);
+    .applyStyleToItem(if(@mode =vertical, @style-vertical-only, @style-horizontal-only));
+  }
+
+  .theme(@theme) {
+    &-@{theme} {
+      background-color: ~'@{menu-@{theme}-color-bg}';
+
+      // 处理普通菜单项的状态变化
+      @item-style: {
+        color: ~'@{menu-@{theme}-color-item_default}';
+        background-color: ~'@{menu-@{theme}-color-bg-item_default}';
+
+        .@{prefix}-icon {
+          color: ~'@{menu-@{theme}-color-icon_default}';
+        }
+
+        &:hover {
+          color: ~'@{menu-@{theme}-color-item_hover}';
+          background-color: ~'@{menu-@{theme}-color-bg-item_hover}';
+
+          .@{prefix}-icon {
+            color: ~'@{menu-@{theme}-color-icon_hover}';
+          }
+        }
+
+        &:focus-visible {
+          .menu-focus-visible-style();
+        }
+
+        &.@{menu-prefix-cls}-selected {
+          color: ~'@{menu-@{theme}-color-item_selected}';
+
+          .@{prefix}-icon {
+            color: ~'@{menu-@{theme}-color-icon_selected}';
+          }
+        }
+
+        &.@{menu-prefix-cls}-disabled {
+          color: ~'@{menu-@{theme}-color-item_disabled}';
+          background-color: ~'@{menu-@{theme}-color-bg-item_disabled}';
+
+          .@{prefix}-icon {
+            color: ~'@{menu-@{theme}-color-icon_disabled}';
+          }
+        }
+      };
+
+      .applyStyleToItem(@item-style);
+
+      // 只有 menuItem 选中时需要背景色
+      .@{menu-prefix-cls}-item.@{menu-prefix-cls}-selected {
+        background-color: ~'@{menu-@{theme}-color-bg-item_selected}';
+      }
+
+      //  子菜单被选中时，没有背景色，所以可以单独设置字体色
+      .@{menu-prefix-cls}-inline-header.@{menu-prefix-cls}-selected {
+        color: ~'@{menu-@{theme}-color-submenu_selected}';
+
+        .@{prefix}-icon {
+          color: ~'@{menu-@{theme}-color-submenu_selected}';
+        }
+
+        &:hover {
+          background-color: ~'@{menu-@{theme}-color-bg-submenu_selected_hover}';
+        }
+      }
+
+      // 为水平菜单添加项目选中的样式
+      &.@{menu-prefix-cls}-horizontal {
+        @item-selected-style: {
+          &.@{menu-prefix-cls}-selected {
+            background: none;
+            .text-color-transition();
+
+            &:hover {
+              background-color: ~'@{menu-@{theme}-color-bg-item_hover}';
+            }
+          }
+        };
+
+        .applyStyleToItem(@item-selected-style);
+      }
+
+      // 处理标题样式
+      .@{menu-prefix-cls}-group-title {
+        color: ~'@{menu-@{theme}-color-group-title}';
+        // 快速消除 hover 的特殊样式
+        pointer-events: none;
+      }
+
+      // 展开折叠按钮颜色
+      .@{menu-prefix-cls}-collapse-button {
+        color: ~'@{menu-@{theme}-color-button}';
+        background-color: ~'@{menu-@{theme}-color-bg-button}';
+
+        &:hover {
+          background-color: ~'@{menu-@{theme}-color-bg-button_hover}';
+        }
+
+        &:focus-visible {
+          box-shadow: 0 0 0 2px @color-primary-6;
+        }
+      }
+    }
+  }
+
+  .item-base();
+  .theme(light);
+  .theme(dark);
+
+  // 校正 a 标签颜色
+  a,
+  a:hover,
+  a:focus,
+  a:active {
+    color: inherit;
+    text-decoration: none;
+    cursor: inherit;
+  }
+
+  &-item-inner {
+    > a:only-child::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      content: '';
+    }
+  }
+
+  &-inner {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+  }
+
+  &-vertical {
+    .item-mode(vertical);
+
+    .@{menu-prefix-cls}-inner {
+      padding: @menu-vertical-padding-vertical @menu-vertical-padding-horizontal;
+    }
+
+    .@{menu-prefix-cls}-item.@{menu-prefix-cls}-item-indented {
+      display: flex;
+    }
+
+    // 为 header 右侧预留下放置 suffixIcon 的空间
+    .@{menu-prefix-cls}-pop-header,
+    .@{menu-prefix-cls}-inline-header {
+      padding-right: @menu-vertical-item-padding-horizontal + 16;
+    }
+  }
+
+  // 水平菜单中，仅允许出现普通 item 和 popSubMenu
+  &-horizontal {
+    width: auto;
+    height: auto;
+
+    .item-mode(horizontal);
+
+    .@{menu-prefix-cls}-inner {
+      display: flex;
+      align-items: center;
+      padding: @menu-horizontal-padding-vertical @menu-horizontal-padding-horizontal;
+    }
+
+    .@{menu-prefix-cls}-item,
+    .@{menu-prefix-cls}-pop {
+      display: inline-block;
+      flex-shrink: 0;
+      vertical-align: middle;
+
+      &:not(:first-child) {
+        margin-left: @menu-horizontal-item-gap;
+      }
+    }
+
+    .@{menu-prefix-cls}-pop::after {
+      position: absolute;
+      bottom: -$height;
+      left: 0;
+      width: 100%;
+      height: @menu-horizontal-padding-vertical;
+      content: ' ';
+    }
+  }
+
+  // 水平菜单的动态折叠容器
+  &-overflow {
+    &-wrap {
+      width: 100%;
+    }
+
+    &-sub-menu-mirror {
+      margin-left: @menu-horizontal-item-gap;
+    }
+
+    &-sub-menu-mirror,
+    &-hidden-menu-item {
+      position: absolute !important;
+      white-space: nowrap;
+      visibility: hidden;
+      pointer-events: none;
+    }
+  }
+
+  // 选中状态下的提示浮标，相对于 MenuItem 定位
+  &-selected-label {
+    position: absolute;
+    right: $left;
+    bottom: -@menu-horizontal-padding-vertical;
+    left: @menu-horizontal-item-padding-horizontal;
+    height: @menu-height-label-item-selected;
+    background-color: @menu-color-label-item-selected;
+    animation: ~'@{prefix}-menu-selected-item-label-enter' @transition-duration-2 @transition-timing-function-linear;
+  }
+
+  &-pop-button {
+    width: auto;
+    background: none;
+    box-shadow: none;
+
+    &.@{menu-prefix-cls}-collapse {
+      width: auto;
+    }
+
+    @item-style: {
+      width: @menu-pop-button-size;
+      height: $width;
+      margin-bottom: @menu-pop-button-margin-bottom;
+      line-height: $height;
+      border: 1px solid @menu-pop-button-border-color;
+      border-radius: 50%;
+      box-shadow: @menu-pop-button-box-shadow;
+    };
+
+    .applyStyleToItem(@item-style);
+  }
+
+  // 折叠样式
+  &-collapse {
+    width: @menu-collapse-width;
+
+    .@{menu-prefix-cls}-inner {
+      padding: @menu-collapse-padding-vertical @menu-collapse-padding-horizontal;
+    }
+
+    .@{menu-prefix-cls}-group-title,
+    .@{menu-prefix-cls}-icon-suffix {
+      display: none;
+    }
+
+    // Hide text after icon when menu is collapsed
+    @style-item-text: {
+      .@{prefix}-icon {
+        margin-right: 100vw;
+      }
+    };
+
+    .applyStyleToItem(@style-item-text);
+
+    & &-button {
+      right: unset;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  // 折叠按钮
+  &-collapse-button {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: @menu-width-collapse-button;
+    height: @menu-height-collapse-button;
+    border-radius: @menu-border-radius-collapse-button;
+    cursor: pointer;
+  }
+
+  // sub-menu-inline 的内容区域样式
+  &-inline-content {
+    height: auto;
+    overflow: hidden;
+    transition: height @transition-duration-2 @transition-timing-function-standard;
+  }
+
+  // 弹出的 ToolTip 中 a 标签的样式
+  &-item-tooltip a {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: inherit;
+    }
+
+    &::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      content: '';
+    }
+  }
+
+  // 弹出菜单浮层三角箭头
+  &-pop-trigger {
+    &.@{prefix}-trigger-position-bl {
+      transform: translateY(@menu-horizontal-padding-vertical);
+
+      .@{prefix}-trigger-arrow {
+        z-index: 0;
+        border-top: 1px solid @menu-color-border-popup;
+        border-left: 1px solid @menu-color-border-popup;
+      }
+    }
+
+    &.@{prefix}-trigger[trigger-placement='rt'] {
+      transform: translateX(@menu-vertical-padding-horizontal);
+
+      .@{prefix}-trigger-arrow {
+        z-index: 0;
+        border-bottom: 1px solid @menu-color-border-popup;
+        border-left: 1px solid @menu-color-border-popup;
+      }
+    }
+
+    &.@{prefix}-trigger[trigger-placement='lt'] {
+      transform: translateX(-@menu-vertical-padding-horizontal);
+
+      .@{prefix}-trigger-arrow {
+        z-index: 0;
+        border-top: 1px solid @menu-color-border-popup;
+        border-right: 1px solid @menu-color-border-popup;
+      }
+    }
+
+    .@{prefix}-dropdown-menu-dark ~ .@{prefix}-trigger-arrow-container {
+      .@{prefix}-trigger-arrow {
+        background-color: @menu-dark-color-bg;
+        border-color: @menu-dark-color-bg;
+      }
+    }
+  }
+}
+
+.@{menu-prefix-cls}-rtl {
+  direction: rtl;
+
+  @rtl-item-style: {
+    .@{prefix}-icon {
+      margin-right: 0;
+      margin-left: @menu-margin-right-item-prefix-icon;
+    }
+  };
+
+  .applyStyleToItem(@rtl-item-style);
+
+  .rtl-item-mode(@mode) {
+    @rtl-style-both: {
+      .@{menu-prefix-cls}-icon-suffix .@{prefix}-icon {
+        margin-left: 0;
+      }
+    };
+
+    @rtl-style-vertical-only: {
+      text-overflow: clip; // ellipsis on rtl layout error
+
+      .@{menu-prefix-cls}-item-inner {
+        text-overflow: clip;
+      }
+
+      .@{menu-prefix-cls}-icon-suffix {
+        right: initial;
+        left: @menu-vertical-item-padding-horizontal;
+      }
+    };
+
+    @rtl-style-horizontal-only: {
+      .@{prefix}-icon {
+        margin-right: 0;
+        margin-left: @menu-horizontal-margin-right-item-prefix-icon;
+      }
+
+      .@{menu-prefix-cls}-icon-suffix {
+        margin-right: @menu-margin-left-item-suffix-icon;
+        margin-left: 0;
+      }
+    };
+
+    .applyStyleToItem(@rtl-style-both);
+    .applyStyleToItem(if(@mode =vertical, @rtl-style-vertical-only, @rtl-style-horizontal-only));
+  }
+
+  &.@{menu-prefix-cls}-horizontal {
+    .rtl-item-mode(horizontal);
+
+    .@{menu-prefix-cls}-item,
+    .@{menu-prefix-cls}-pop {
+      &:not(:first-child) {
+        margin-right: @menu-horizontal-item-gap;
+        margin-left: 0;
+      }
+    }
+  }
+
+  &.@{menu-prefix-cls}-vertical {
+    .rtl-item-mode(vertical);
+
+    .@{menu-prefix-cls}-pop-header,
+    .@{menu-prefix-cls}-inline-header {
+      padding-right: @menu-vertical-item-padding-horizontal;
+      padding-left: @menu-vertical-item-padding-horizontal + 16;
+    }
+  }
+
+  .@{menu-prefix-cls}-pop::after {
+    right: 0;
+    left: initial;
+  }
+
+  .@{menu-prefix-cls}-collapse {
+    @rtl-style-item-text: {
+      .@{prefix}-icon {
+        margin-left: 100vw;
+      }
+    };
+
+    .applyStyleToItem(@rtl-style-item-text);
+
+    &-button {
+      right: initial;
+      left: 12px;
+    }
+  }
+
+  .@{menu-prefix-cls}-pop-trigger {
+    &.@{prefix}-trigger-position-bl {
+      .@{prefix}-trigger-arrow {
+        border-right: 1px solid @menu-color-border-popup;
+        border-left: none;
+      }
+    }
+
+    &.@{prefix}-trigger[trigger-placement='rt'] {
+      transform: translateX(-@menu-vertical-padding-horizontal);
+    }
+
+    &.@{prefix}-trigger[trigger-placement='lt'] {
+      transform: translateX(@menu-vertical-padding-horizontal);
+
+      .@{prefix}-trigger-arrow {
+        border-right: none;
+        border-left: 1px solid @menu-color-border-popup;
+      }
+    }
+  }
+}

@@ -1,7 +1,6 @@
-import React from 'react'
+import Tabs from './tabs';
+import type { TabsProps, TabPaneProps } from './interface';
 
-export default function index() {
-  return (
-    <div>index</div>
-  )
-}
+export { TabsProps, TabPaneProps };
+
+export default Tabs;

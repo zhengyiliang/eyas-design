@@ -1,0 +1,183 @@
+@import '../../button/style/index.less';
+@import '../../trigger/style/index.less';
+@import './token.less';
+
+@dropdown-prefix-cls: ~'@{prefix}-dropdown';
+
+.@{dropdown-prefix-cls} {
+  &-menu {
+    position: relative;
+    box-sizing: border-box;
+    max-height: @dropdown-max-height;
+    padding: @dropdown-padding-vertical 0;
+    overflow: auto;
+    background-color: @dropdown-color-bg;
+    border: 1px solid @dropdown-color-border;
+    border-radius: @dropdown-border-radius;
+    box-shadow: @dropdown-box-shadow;
+
+    &-hidden {
+      display: none;
+    }
+
+    &-item,
+    &-pop-header {
+      position: relative;
+      // 避免 Trigger 的小箭头位于其上方
+      z-index: 1;
+      box-sizing: border-box;
+      width: 100%;
+      height: @dropdown-option-height;
+      padding: 0 @dropdown-option-padding-horizontal;
+
+      // default
+      color: @dropdown-option-color-text_default;
+      font-size: @dropdown-font-size;
+      line-height: $height;
+      text-align: left;
+      background-color: @dropdown-option-color-bg_default;
+      cursor: pointer;
+      .text-ellipsis();
+
+      // selected
+      &.@{dropdown-prefix-cls}-menu-selected {
+        color: @dropdown-option-color-text_selected;
+        font-weight: @dropdown-option-font-weight_selected;
+        background-color: @dropdown-option-color-bg_selected;
+        transition: all @transition-duration-1 @transition-timing-function-linear;
+      }
+
+      // hover
+      &:hover {
+        color: @dropdown-option-color-text_hover;
+        background-color: @dropdown-option-color-bg_hover;
+      }
+
+      // focus by Tab
+      &:focus-visible {
+        box-shadow: 0 0 0 2px @color-primary-6 inset;
+      }
+
+      // hotkey active
+      &.@{dropdown-prefix-cls}-menu-active {
+        box-shadow: 0 0 0 1px @color-primary-6 inset;
+      }
+
+      // disabled
+      &.@{dropdown-prefix-cls}-menu-disabled {
+        color: @dropdown-option-color-text_disabled;
+        background-color: @dropdown-option-color-bg_disabled;
+        cursor: not-allowed;
+      }
+
+      // overwrite color of links
+      a,
+      a:hover,
+      a:focus,
+      a:active {
+        color: inherit;
+        text-decoration: none;
+        cursor: inherit;
+      }
+
+      > a:only-child::before {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        content: '';
+      }
+    }
+
+    &-pop-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .@{dropdown-prefix-cls}-menu-icon-suffix {
+        margin-left: @dropdown-margin-left-suffix-icon;
+      }
+    }
+
+    &-group {
+      &:first-child &-title {
+        margin-top: @dropdown-group-title-margin-top - @dropdown-padding-vertical;
+      }
+    }
+
+    &-group-title {
+      box-sizing: border-box;
+      width: 100%;
+      margin-top: @dropdown-group-title-margin-top;
+      padding: 0 @dropdown-group-title-padding-horizontal;
+      color: @dropdown-group-title-color-text;
+      font-size: @dropdown-group-title-font-size;
+      line-height: @dropdown-group-title-height;
+      .text-ellipsis();
+    }
+  }
+
+  &-menu-dark {
+    background-color: @dropdown-dark-color-bg;
+    border-color: @dropdown-dark-color-border;
+
+    .@{dropdown-prefix-cls}-menu-item,
+    .@{dropdown-prefix-cls}-menu-pop-header {
+      // default
+      color: @dropdown-dark-option-color-text_default;
+      background-color: @dropdown-dark-option-color-bg_default;
+
+      // selected
+      &.@{dropdown-prefix-cls}-menu-selected {
+        color: @dropdown-dark-option-color-text_selected;
+        background-color: @dropdown-dark-option-color-bg_selected;
+
+        &:hover {
+          color: @dropdown-dark-option-color-text_selected;
+        }
+      }
+
+      // hover
+      &:hover {
+        color: @dropdown-dark-option-color-text_hover;
+        background-color: @dropdown-dark-option-color-bg_hover;
+      }
+
+      // disabled
+      &.@{dropdown-prefix-cls}-menu-disabled {
+        color: @dropdown-dark-option-color-text_disabled;
+        background-color: @dropdown-dark-option-color-bg_disabled;
+      }
+    }
+
+    .@{dropdown-prefix-cls}-menu-group-title {
+      color: @dropdown-dark-group-title-color-text;
+    }
+  }
+
+  &-menu-pop-trigger {
+    // 下拉框的 menu 弹出不需要小箭头
+    .@{prefix}-trigger-arrow {
+      display: none;
+    }
+  }
+
+  &-menu + .@{prefix}-trigger-arrow {
+    background-color: @dropdown-color-bg;
+  }
+}
+
+.@{dropdown-prefix-cls}-menu-rtl {
+  .@{dropdown-prefix-cls}-menu {
+    &-item,
+    &-pop-header {
+      text-align: right;
+
+      .@{dropdown-prefix-cls}-menu-icon-suffix {
+        margin-right: @dropdown-margin-left-suffix-icon;
+        margin-left: 0;
+      }
+    }
+  }
+}

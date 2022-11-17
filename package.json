@@ -45,21 +45,29 @@
     "@eyas-design/color": "^1.0.0",
     "@eyas-design/icons": "^1.0.0",
     "b-tween": "^0.3.3",
+    "b-validate": "^1.4.3",
+    "lodash": "^4.17.21",
+    "number-precision": "^1.6.0",
     "react": "^18.0.0",
-    "react-transition-group": "^4.4.5"
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
+    "react-sticky": "^6.0.3",
+    "react-transition-group": "^4.4.5",
+    "scroll-into-view-if-needed": "^2.2.29"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.15.1",
     "@testing-library/react": "^13.0.0",
     "@types/jest": "^27.0.3",
+    "@types/react-dnd": "^3.0.2",
     "@umijs/fabric": "^2.8.1",
     "@umijs/test": "^3.0.5",
     "dumi": "^1.1.0",
     "father": "^4.0.0-rc.2",
     "gh-pages": "^3.0.0",
-    "lint-staged": "^10.0.7",
     "less": "^4.1.3",
     "less-plugin-clean-css": "^1.5.1",
+    "lint-staged": "^10.0.7",
     "prettier": "^2.2.1",
     "yorkie": "^2.0.0"
   }

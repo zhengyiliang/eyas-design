@@ -10,7 +10,7 @@ function Layout(props) {
 const App = () => {
   return (
     <Layout>
-      <Typography.Text>Arco Design</Typography.Text>
+      <Typography.Text>Eyas Design</Typography.Text>
       <Typography.Text type="secondary">Secondary</Typography.Text>
       <Typography.Text type="primary">Primary</Typography.Text>
       <Typography.Text type="success">Success</Typography.Text>

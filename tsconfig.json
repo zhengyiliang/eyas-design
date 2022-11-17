@@ -4,10 +4,7 @@
     "jsx": "react",
     "module": "es6",
     "target": "es5",
-    "lib": [
-      "es5",
-      "dom"
-    ],
+    "lib": ["es5", "dom"],
     "strict": false,
     "moduleResolution": "node",
     "declaration": true,
@@ -18,15 +15,8 @@
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./",
+    "baseUrl": "./"
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "typings"
-  ]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/tabs/__demo__/drag.jsx"],
+  "exclude": ["node_modules", "dist", "typings"]
 }
