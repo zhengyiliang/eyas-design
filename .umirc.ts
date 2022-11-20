@@ -22,7 +22,6 @@ export default defineConfig({
     // null,
     // {
     //   title: '文档',
-
     //   path: '/docs',
     // },
     {
