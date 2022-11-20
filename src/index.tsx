@@ -29,4 +29,4 @@ export { default as Checkbox } from './checkbox';
 export { default as Empty } from './empty';
 export { default as InputTag } from './inputTag';
 
-import './style/index.less';
+// import './style/index.less';
