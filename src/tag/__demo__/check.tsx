@@ -8,7 +8,7 @@ const App = () => {
       <Tag checkable color="red" defaultChecked>
         Toutiao
       </Tag>
-      <Tag checkable color="arcoblue" defaultChecked>
+      <Tag checkable color="eyasblue" defaultChecked>
         Lark
       </Tag>
     </Space>

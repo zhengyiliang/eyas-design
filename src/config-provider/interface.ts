@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
-import { ButtonProps } from "../button/interface";
-import { SpaceProps } from "../space/interface";
+import { ReactNode } from 'react';
+import { ButtonProps } from '../button/interface';
+import { SpaceProps } from '../space/interface';
 
 // 主题配置
 export type ThemeConfig = Record<string, any>;
@@ -14,9 +14,9 @@ export type ComponentConfig = {
 // 配置提供-属性
 export interface ConfigProviderProps {
   /**
- * @zh 全局弹出框挂载的父级节点。
- * @default () => document.body
- */
+   * @zh 全局弹出框挂载的父级节点。
+   * @default () => document.body
+   */
   getPopupContainer?: (node: HTMLElement) => Element;
   /**
    * @description 当按钮中是两个汉字时，自动在两个汉字中添加一个空格。
@@ -30,6 +30,10 @@ export interface ConfigProviderProps {
    * @description 主题配置
    */
   theme?: ThemeConfig;
+  /**
+   * @description 全局配置组件内的空组件。
+   */
+  renderEmpty?: (componentName?: string) => ReactNode;
   /**
    * @description 配置组件的默认尺寸，只会对支持`size`属性的组件生效。
    * @default default
@@ -47,4 +51,4 @@ export interface ConfigProviderProps {
    */
   rtl?: boolean;
   zIndex?: number;
-};
+}

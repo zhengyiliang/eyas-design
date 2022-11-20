@@ -164,7 +164,7 @@ export default class Control<
         this.touched = false;
         this.errors = null;
         this.warnings = null;
-        // https://github.com/arco-design/arco-design/issues/1460
+        // https://github.com/eyas-design/eyas-design/issues/1460
         if (dependencies || shouldUpdate) {
           shouldUpdateItem();
         } else {

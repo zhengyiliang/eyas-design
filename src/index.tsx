@@ -22,5 +22,11 @@ export { default as Radio } from './radio';
 export { default as ResizeBox } from './resizeBox';
 export { default as Tag } from './tag';
 export { default as Form } from './form';
+export { default as Skeleton } from './skeleton';
+export { default as Popconfirm } from './popconfirm';
+export { default as Select } from './select';
+export { default as Checkbox } from './checkbox';
+export { default as Empty } from './empty';
+export { default as InputTag } from './inputTag';
 
 import './style/index.less';

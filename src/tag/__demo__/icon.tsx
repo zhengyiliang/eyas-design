@@ -14,7 +14,7 @@ const App = () => {
       <Tag color="blue" icon={<IconTwitter />}>
         Twitter
       </Tag>
-      <Tag color="arcoblue" icon={<IconFacebook />}>
+      <Tag color="eyasblue" icon={<IconFacebook />}>
         Facebook
       </Tag>
     </Space>

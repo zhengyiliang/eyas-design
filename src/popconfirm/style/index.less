@@ -1,0 +1,62 @@
+@import '../../button/style/index.less';
+@import '../../tooltip/style/index.less';
+@import '../../popover/style/index.less';
+@import './token.less';
+
+@popconfirm-prefix-cls: ~'@{prefix}-popconfirm';
+
+.@{popconfirm-prefix-cls} {
+  &-content {
+    box-sizing: border-box;
+    padding: @popconfirm-padding-vertical @popconfirm-padding-horizontal;
+  }
+
+  &-title {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: @popconfirm-margin-title-bottom;
+    color: @popconfirm-color-title-text;
+    font-size: @popconfirm-font-title-size;
+
+    &-icon {
+      display: inline-flex;
+      align-items: center;
+      height: @line-height-base * @popconfirm-font-title-size;
+      margin-right: @popconfirm-margin-icon-right;
+      font-size: @popconfirm-size-title-icon;
+
+      .@{prefix}-icon-exclamation-circle-fill {
+        color: @color-warning-6;
+      }
+    }
+  }
+
+  .@{popconfirm-prefix-cls}-btn {
+    text-align: right;
+
+    > button {
+      margin-left: @popconfirm-margin-button-left;
+    }
+  }
+}
+
+.@{popconfirm-prefix-cls}-rtl {
+  .@{popconfirm-prefix-cls} {
+    &-title {
+      &-icon {
+        margin-right: 0;
+        margin-left: @popconfirm-margin-icon-right;
+      }
+    }
+
+    &-btn {
+      text-align: left;
+
+      > button {
+        margin-right: @popconfirm-margin-button-left;
+        margin-left: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+@import './token.less';
+
+@empty-prefix-cls: ~'@{prefix}-empty';
+
+.@{empty-prefix-cls} {
+  box-sizing: border-box;
+  width: 100%;
+  padding: @empty-spacing-padding 0;
+
+  & &-wrapper {
+    box-sizing: border-box;
+    width: 100%;
+    color: @empty-color-icon;
+    text-align: center;
+
+    .@{empty-prefix-cls}-image {
+      margin-bottom: @empty-spacing-image-margin-bottom;
+      font-size: @empty-font-size-image;
+      line-height: 1;
+    }
+
+    img {
+      height: @empty-size-img-height;
+    }
+  }
+
+  & &-description {
+    color: @empty-color-text;
+    font-size: @empty-font-size-text;
+  }
+}

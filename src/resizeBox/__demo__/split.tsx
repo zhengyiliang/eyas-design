@@ -21,7 +21,7 @@ function App() {
         max={0.8}
         min={0.2}
         panes={[
-          <Tag key="first" color="arcoblue">
+          <Tag key="first" color="eyasblue">
             Fist
           </Tag>,
           <Tag key="second" color="green">
