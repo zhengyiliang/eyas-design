@@ -19,9 +19,9 @@ function App() {
             const options = body.results.map((user) => ({
               label: (
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <Avatar size={24} style={{ marginLeft: 6, marginRight: 12 }}>
+                  {/* <Avatar size={24} style={{ marginLeft: 6, marginRight: 12 }}>
                     <img alt="avatar" src={user.picture.thumbnail} />
-                  </Avatar>
+                  </Avatar> */}
                   {`${user.name.first} ${user.name.last}`}
                 </div>
               ),

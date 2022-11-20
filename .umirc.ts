@@ -20,10 +20,10 @@ export default defineConfig({
   dynamicImport: {},
   navs: [
     // null,
-    {
-      title: '文档',
-      path: '/docs',
-    },
+    // {
+    //   title: '文档',
+    //   path: '/docs',
+    // },
     {
       title: '组件',
       path: '/components',

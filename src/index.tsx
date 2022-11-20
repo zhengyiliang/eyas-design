@@ -28,5 +28,6 @@ export { default as Select } from './select';
 export { default as Checkbox } from './checkbox';
 export { default as Empty } from './empty';
 export { default as InputTag } from './inputTag';
-
+export { default as Spin } from './spin';
+export { default as Avatar } from './avatar';
 // import './style/index.less';
