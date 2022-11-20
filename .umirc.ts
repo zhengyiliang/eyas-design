@@ -9,9 +9,9 @@ export default defineConfig({
   //     .set('eyas-ui', path.resolve(__dirname, 'src'))
   // },
   title: 'eyas-ui',
-  hash: true,
-  base: '/eyas-ui',
-  publicPath: '/eyas-ui/',
+  // hash: true,
+  base: '/eyas-design',
+  publicPath: '/eyas-design/',
   favicon: 'https://img.alicdn.com/tfs/TB1YHEpwUT1gK0jSZFhXXaAtVXa-28-27.svg',
   logo: 'https://img.alicdn.com/tfs/TB1YHEpwUT1gK0jSZFhXXaAtVXa-28-27.svg',
   outputPath: 'docs-dist',

@@ -30,4 +30,5 @@ export { default as Empty } from './empty';
 export { default as InputTag } from './inputTag';
 export { default as Spin } from './spin';
 export { default as Avatar } from './avatar';
-// import './style/index.less';
+
+import './style/index.less';
